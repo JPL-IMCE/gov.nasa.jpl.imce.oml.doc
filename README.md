@@ -14,7 +14,9 @@ Quote from [W3C's SemanticWeb summary:](https://www.w3.org/standards/semanticweb
 In practice, vocabularies can be very complex (with several thousands of terms) or very simple (describing one or two concepts only). There is no clear division between what is referred to as “vocabularies” and “ontologies”. The trend is to use the word “ontology” for more complex, and possibly quite formal collection of terms, whereas “vocabulary” is used when such strict formalism is not necessarily used or only in a very loose sense. 
 Vocabularies are the basic building blocks for inference techniques on the Semantic Web.
 
-### Core constructs of the Ontological Modeling Language 
+### The OML vocabulary is a subset of the [OWL2-DL] vocabulary
+
+  
 
 The core constructs of OML are:
   - [Terms](./GLOSSARY.md#Term) such as concepts and relationships
