@@ -16,7 +16,7 @@ Vocabularies are the basic building blocks for inference techniques on the Seman
 ### Core constructs of the Ontological Modeling Language 
 
 The core constructs of OML are:
-  - Term such as concepts and relationships
+  - [Terms](./GLOSSARY.md#Term) such as concepts and relationships
   - Axiom about terms
   - Terminology, collections of terms & axioms
 
