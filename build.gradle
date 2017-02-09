@@ -1,0 +1,5 @@
+task build {
+	doLast {
+		println("# TODO: use gitbook to build the doc...")
+	}
+}
