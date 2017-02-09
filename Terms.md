@@ -1,5 +1,5 @@
 {% include "./external-links.md" %}
-[term]: ./GLOSSARY.md#Term
+[term]: {glossary.path}#Term
 [terms]: ./GLOSSARY.md#Term
 
 
