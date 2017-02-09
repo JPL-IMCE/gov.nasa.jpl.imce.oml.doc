@@ -1,6 +1,6 @@
 {% include "./external-links.md" %}
 [term]: {glossary.path}#Term
-[terms]: ./GLOSSARY.md#Term
+[terms]: {glossary.path}#Term
 
 
 ### The category of OML [terms]
