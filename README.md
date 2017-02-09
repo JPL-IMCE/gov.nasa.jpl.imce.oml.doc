@@ -19,7 +19,7 @@ Vocabularies are the basic building blocks for inference techniques on the Seman
   
 
 The core constructs of OML are:
-  - [Terms](./GLOSSARY.md#Term) such as concepts and relationships
+  - [Terms](./Terms.md) such as concepts and relationships
   - [Axioms](./GLOSSARY.md#Axiom) about terms
   - [Terminologies](./GLOSSARY.md#Terminology), collections of terms & axioms
 
