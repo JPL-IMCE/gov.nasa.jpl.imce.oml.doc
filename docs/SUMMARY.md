@@ -4,6 +4,10 @@
 
 * [Ontological Modeling Language Specification](README.md)
 
-## Methods
+## Topics
 
-* [Defining Methods](methods.md)
+* [The category of OML Terms](Terms.md)
+
+## Annexes
+
+* [Glossary](GLOSSARY.md)
