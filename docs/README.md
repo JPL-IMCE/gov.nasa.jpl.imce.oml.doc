@@ -11,6 +11,26 @@ classes, properties, individuals and data values that are represented in Semanti
 form the basis of the [OWL2-DL]+[SWRL] mapping of an OML Context whose corresponding constructs include
 OML Entity, OML EntityRelationship, OML Datatype,  OML DataProperty and OML TerminologyInstanceAssertion.
 
+## Vocabularies for Model-Based Systems Engineering (MBSE)
+
+### What is a vocabulary?
+
+Quote from [W3C's SemanticWeb summary:](https://www.w3.org/standards/semanticweb/ontology#summary "What is a vocabulary?")
+> On the Semantic Web, vocabularies define the concepts and relationships (also referred to as “terms”) used to describe and represent an area of concern. 
+Vocabularies are used to classify the terms that can be used in a particular application, characterize possible relationships, and define possible constraints on using those terms. 
+In practice, vocabularies can be very complex (with several thousands of terms) or very simple (describing one or two concepts only). 
+There is no clear division between what is referred to as “vocabularies” and “ontologies”. 
+The trend is to use the word “ontology” for more complex, and possibly quite formal collection of terms, 
+whereas “vocabulary” is used when such strict formalism is not necessarily used or only in a very loose sense. 
+Vocabularies are the basic building blocks for inference techniques on the Semantic Web.
+
+### The OML vocabulary is a subset of the [OWL2-DL] vocabulary for domain-specific MBSE
+
+Defining a controlled vocabulary of a particular domain of systems engineering facilitates communication among stakeholders.
+In OML, a controlled vocabulary is an OML TerminologyBox, the semantics of which is defined by its mapping to a corresponding [OWL2-DL Ontology].
+An OML TerminologyBox defines OML Terms and specifies constraints among them via OML Axioms.
+OML Terms and OML Axioms map to patterns involving [OWL2 Entities] and [OWL2 Axioms].
+
 ## Key properties of the semantics of OML in [OWL2-DL]+[SWRL].
 
 The semantics of an OML Context is defined by its mapping to a corresponding [OWL2-DL Ontology] with [SWRL] rules.
@@ -68,37 +88,13 @@ with an emphasis on precision and rigor thanks to the following key features of 
   verification properties asserted using [SWRL] rules where the characteristics of an OML EntityRelationship such as transitivity,
   reflexivity and asymetry provide useful constraints for encoding characteristics of the domain-specific vocabulary or of that of a description
   of a particular system topology.
-  
-## Vocabularies for Model-Based Systems Engineering (MBSE)
 
-### What is a vocabulary?
+## Organization of this Document
 
-Quote from [W3C's SemanticWeb summary:](https://www.w3.org/standards/semanticweb/ontology#summary "What is a vocabulary?")
-> On the Semantic Web, vocabularies define the concepts and relationships (also referred to as “terms”) used to describe and represent an area of concern. 
-Vocabularies are used to classify the terms that can be used in a particular application, characterize possible relationships, and define possible constraints on using those terms. 
-In practice, vocabularies can be very complex (with several thousands of terms) or very simple (describing one or two concepts only). 
-There is no clear division between what is referred to as “vocabularies” and “ontologies”. 
-The trend is to use the word “ontology” for more complex, and possibly quite formal collection of terms, 
-whereas “vocabulary” is used when such strict formalism is not necessarily used or only in a very loose sense. 
-Vocabularies are the basic building blocks for inference techniques on the Semantic Web.
+Since [OWL2-DL] is fundamentally important for the structure and semantics of OML,
+the organization of this document parallels that of the [OWL2 Structural Specification].
 
-### The OML vocabulary is a subset of the [OWL2-DL] vocabulary for domain-specific MBSE
+- [Ontological Modeling](OntologicalModeling.md) corresponds to the overview of [OWL2-DL Ontologies] 
+  that of the relationship with relevant modeling standards: [OMG UML 2.5] and [OMG SysML 1.4].
 
-Defining a controlled vocabulary of a particular domain of systems engineering facilitates communication among stakeholders.
-In OML, a controlled vocabulary is an OML TerminologyBox, the semantics of which is defined by its mapping to a corresponding [OWL2-DL Ontology].
-An OML TerminologyBox defines OML Terms and specifies constraints among them via OML Axioms.
-OML Terms and OML Axioms map to patterns involving [OWL2 Entities] and [OWL2 Axioms].
-
-![OML TerminologyBox & taxonomy of OML Terms](images/OML TerminologyBox.svg)
-
-a collection of OML Terms and OML Axioms; both of which map to [OWL2 Entities] and [OWL2 Axioms].
-
-OML supports this activity with the notion of an OML TerminologyBox for defining each OML Term used in the controlled vocabulary
-and specifying their semantics via OML Axioms.
-
-OML defines four core abstractions to support defining domain-specific
-The core constructs of OML are:
-  - [Terms](./Terms.md) such as concepts and relationships
-  - [Axioms](./GLOSSARY.md#Axiom) about terms
-  - [Terminologies](./GLOSSARY.md#Terminology), collections of terms & axioms
 

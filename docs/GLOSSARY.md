@@ -10,12 +10,12 @@ a collection of multiple technology-based Application Programming Interfaces (AP
 
   All 90 definitions induce corresponding EMF-based APIs and libraries.
   For the 54 concrete definitions, the *EMF/CDO* APIs
-  include all the 51 *Normalized* APIs, all the 52 *Functional* APIs,
+  include all the 49 *Normalized* APIs, all the 3 *Functional* APIs,
   and 2 definitions uniquely intended for *EMF/CDO*.
   
 - **Normalized** OMF APIs and libraries based on polyglot functional programming in Java, JavaScript and Scala
 
-  A subset of 51 definitions from the 54 concrete definitions
+  A subset of 49 definitions from the 54 concrete definitions
   constitute the set of normalized relational database schema tables for the technology-agnostic OML tabular interchange representation.
   These definitions generate language-friendly functional programming APIs for Java, JavaScript and Scala.
   Note that Scala is the only language that can provide strong compile-time guarantees of the referential transparency of the OML functional APIs.
@@ -24,8 +24,8 @@ a collection of multiple technology-based Application Programming Interfaces (AP
   
 - **Functional** OMF APIs and libraries in Scala for in-memory processing of OML tabular interchange representations
 
-  A subset of 52 definitions from the 54 concrete definitions
-  augment the polyglot functional programming OMF APIs for the in-memory processing of OMF information
+  A subset of 3 definitions from the 54 concrete definitions
+  augment the normalized OMF APIs for the in-memory processing of OMF information
   extracted from parsing the OML tabular interchange representation.
 
 # OML Glossary of 36 Abstract Definitions {#oml-abstract-glossary}
@@ -34,7 +34,7 @@ a collection of multiple technology-based Application Programming Interfaces (AP
 
 An OML Axiom maps to a pattern of [OWL2 Axioms].
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML TerminologyBoxStatement
@@ -49,7 +49,7 @@ An OML ConceptTreeDisjunction represents the root & non-leaf nodes of a concept 
 - Root node is a RootConceptTaxonomyAxiom.
 - Non-leaf nodes are AnonymousConceptTaxonomyAxioms.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract with 2 specializations:
  - OML AnonymousConceptTaxonomyAxiom
@@ -67,7 +67,7 @@ If is partially instantiated if some essential OML EntityRelationship
 or OML DataRelationshipFromEntity with `isIdentityCriteria=true` lacks
 an OML TerminologyInstanceAssertion specifying its reference or value respectively.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract with 2 specializations:
  - OML Concept
@@ -86,7 +86,7 @@ The semantics depends on the kind of OML ConceptualEntity classifier:
 - otherwise, distinctly named OML ConceptualEntitySingletonInstance
   represent semantically different instances.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML SingletonInstance
@@ -98,10 +98,10 @@ and with 2 specializations:
 ## OML Context
 
 An OML Context maps to an [OWL2-DL Ontology];
-it is a kind of OML Resource that is a logical container of OML TerminologyThings
-and a non-logical container of OML Annotations.
+it is a kind of OML Resource that is a logical container of OML TerminologyThing(s)
+and a non-logical container of OML Annotation(s).
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 2 generalizations:
  - OML Resource
@@ -115,7 +115,7 @@ and with 2 specializations:
 
 An OWL DataRange corresponds to an [OWL2 DataRange] with arity=1.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML Datatype
@@ -129,7 +129,7 @@ and with 2 specializations:
 An OML DataRelationship is an OML DirectedBinaryRelationshipKind
 where the domain or the range is some kind of OML Datatype.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 2 generalizations:
  - OML DirectedBinaryRelationshipKind
@@ -146,7 +146,7 @@ and with 4 specializations:
 An OML DataRelationshipDomain is an abstraction
 for the domain of an OML DataRelationship
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract with 2 specializations:
  - OML DataRelationshipFromEntity
@@ -157,7 +157,7 @@ Abstract with 2 specializations:
 An OML DataRelationshipFromEntity is an OML DataRelationship
 whose domain is an OML Entity.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML DataRelationshipDomain
@@ -171,7 +171,7 @@ and with 2 specializations:
 An OML DataRelationshipFromStructure is an OML DataRelationship
 whose domain is an OML Structure.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML DataRelationshipDomain
@@ -185,7 +185,7 @@ and with 2 specializations:
 An OML DataRelationshipRange is an abstraction
 for the range of an OML DataRelationship
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract with 2 specializations:
  - OML DataRelationshipToScalar
@@ -196,7 +196,7 @@ Abstract with 2 specializations:
 An OML DataRelationshipToScalar is an OML DataRelationship
 whose range is an OML DataRange.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML DataRelationshipRange
@@ -210,7 +210,7 @@ and with 2 specializations:
 An OML DataRelationshipToStructure is an OML DataRelationship
 whose range is an OML Structure.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML DataRelationshipRange
@@ -227,7 +227,7 @@ In practice, an OML DataType maps to the [OWL2-DL] subset; which means
 that an atomic OML Datatype maps to an [OWL2 Datatype] whereas
 a structured OML Datatype maps to an [OWL2 Class].
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML Term
@@ -241,7 +241,7 @@ and with 2 specializations:
 An OML DescriptionBoxRelationship is a directed binary relationship
 from an OML DescriptionBox source to an OML Context target.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML TerminologyThing
@@ -253,10 +253,10 @@ and with 2 specializations:
 ## OML DirectedBinaryRelationshipKind
 
 An OML DirectedBinaryRelationshipKind is an abstraction
-for the category of OML Terms
+for the category of OML Term(s)
 that are relationships with arity 2
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract with 2 specializations:
  - OML DataRelationship
@@ -264,11 +264,11 @@ Abstract with 2 specializations:
 
 ## OML DisjointUnionOfConceptsAxiom
 
-An OML DisjointUnionOfConceptsAxioms represents non-leaf & leaf nodes of a concept taxonomy:
-- Non-leaf nodes are AnonymousConceptTaxonomyAxioms.
-- Leaf nodes are SpecificDisjointConceptAxioms.
+An OML DisjointUnionOfConceptsAxiom(s) represents non-leaf & leaf nodes of a concept taxonomy:
+- Each non-leaf node is an OML AnonymousConceptTaxonomyAxiom.
+- Each leaf nodes is an OML SpecificDisjointConceptAxiom.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML TerminologyBundleStatement
@@ -284,7 +284,7 @@ that is either an OML UnaryTermKind or
 an OML DirectedBinaryRelationshipKind whose subject
 and range are both a kind of OML Entity.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML Term
@@ -300,7 +300,7 @@ An OML EntityRelationship is a kind of OML Term that
 is an OML DirectedBinaryRelationshipKind between a
 domain OML Entity and a range OML Entity.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 2 generalizations:
  - OML DirectedBinaryRelationshipKind
@@ -315,7 +315,7 @@ and with 2 specializations:
 An OML EntityRestrictionAxiom maps to an [OWL2 Object Property Restiction]
 for an OML EntityRelationship.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML TermAxiom
@@ -329,7 +329,7 @@ and with 2 specializations:
 An OML EntityScalarDataPropertyRestrictionAxiom maps to
 some kind of OWL2 Data Property Restriction.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML TermAxiom
@@ -348,7 +348,7 @@ globally by an IRI across multiple vocabularies.
 For a particular OML Resource, the constraints
 between its name and its IRI depend on what kind of OML Resource it is.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract with 3 specializations:
  - OML Context
@@ -357,15 +357,16 @@ Abstract with 3 specializations:
 
 ## OML RestrictedDataRange
 
-An OML RestrictedDataRange corresponds to an [OWL2 DataRange] defined in terms of some kind of restriction of some other OML DataRange.
-Instead of arbitrary OWL2 FacetRestrictionAxioms as constructors of [OWL2 DataRange]s,
-the specializations of RestrictedDataRange correspond to the allowed restrictions in OWL2-DL datatype maps.
+An OML RestrictedDataRange corresponds to an [OWL2 DataRange] defined
+in terms of some kind of restriction of some other OML DataRange.
+The specializations of OML RestrictedDataRange correspond to
+the allowed restrictions in the [OWL2 Datatype Maps].
 Node that the vocabulary of XSD fundamental facets is not included in OWL2-DL, consequently,
 there is no support in OML for specifying datatype restrictions involving XSD fundamental facets as well.
-@see https://www.w3.org/TR/owl2-syntax/#Data_Ranges
-@see https://www.w3.org/TR/owl2-syntax/#Datatype_Maps
+Each specialization maps to an OWL2 Declaration of an [OWL2 Datatype] whose
+[OWL2 DataRange] corresponds to the OWL2 mapping of that specialized restriction.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML DataRange
@@ -384,7 +385,7 @@ and with 8 specializations:
 
 An OML SingletonInstance defines an instance of either an OML ConceptualEntity or of an OML Structure.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML TerminologyInstanceAssertion
@@ -398,7 +399,7 @@ and with 2 specializations:
 An OML SpecializationAxiom is a logical axiom
 about a taxonomic relationship between a specific and a general OML Entity.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML TermAxiom
@@ -412,7 +413,7 @@ and with 3 specializations:
 
 An OML Term map to the declaration of an [OWL2-DL Entity] of some kind.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 2 generalizations:
  - OML Resource
@@ -428,7 +429,7 @@ and with 4 specializations:
 
 An OML TermAxiom is a logical axiom about an OML Term.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML Axiom
@@ -442,7 +443,7 @@ and with 3 specializations:
 
 An OML TerminologyAxiom is asserted in a TerminologyBox of some kind.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML TerminologyThing
@@ -454,14 +455,14 @@ and with 2 specializations:
 ## OML TerminologyBox
 
 An OML TerminologyBox is an OML Context for defining a domain-specific vocabulary
-as a logical set of OML TerminologyBoxStatements,
-possibly by reuse of other vocabularies via OML TerminologyBoxAxioms.
+as a logical set of OML TerminologyBoxStatement(s),
+possibly by reuse of other vocabularies via OML TerminologyBoxAxiom(s).
 The semantics of an OML TerminologyBox domain-specific vocabulary is defined
 by the mapping to [OWL2-DL] of the other vocabularies it reuses, if any, and
-that of its OML TerminologyBoxAxioms and OML TerminologyBoxStatements
+that of its OML TerminologyBoxAxiom(s) and OML TerminologyBoxStatement(s)
 according to its OML TerminologyGraphKind.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML Context
@@ -474,7 +475,7 @@ and with 2 specializations:
 
 An OML TerminologyBoxAxiom is a TerminologyAxiom that asserts a logical statement about a Term.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML TerminologyAxiom
@@ -489,7 +490,7 @@ and with 3 specializations:
 An OML TerminologyBoxStatement is a logical axiom about an OML TerminologyThing
 asserted in the context of an OML TerminologyBox.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML TerminologyThing
@@ -502,7 +503,7 @@ and with 2 specializations:
 
 An OML TerminologyBundleAxiom is a TerminologyAxiom that asserts a logical statement in the context of a Bundle.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML TerminologyAxiom
@@ -515,7 +516,7 @@ and with 1 specialization:
 An OML TerminologyBundleStatement is a logical axiom about an OML TerminologyThing
 asserted in the context of an OML Bundle.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML TerminologyThing
@@ -528,7 +529,7 @@ and with 2 specializations:
 
 An OML TerminologyInstanceAssertion is a logical OML TerminologyThing defined in an OML TerminologyDescription.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract definition with 2 generalizations:
  - OML Resource
@@ -547,7 +548,7 @@ and with 6 specializations:
 An OML TerminologyThing is a logical abstraction for everything
 in a vocabulary that is globally identified by a UUID.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract with 6 specializations:
  - OML Context
@@ -559,10 +560,10 @@ Abstract with 6 specializations:
 
 ## OML UnaryTermKind
 
-An OML UnaryTermKind is an abstraction for the category of OML Terms
+An OML UnaryTermKind is an abstraction for the category of OML Term(s)
 that are relationships with arity 1
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Abstract with 4 specializations:
  - OML Aspect
@@ -572,14 +573,7 @@ Abstract with 4 specializations:
 
 # OML Glossary of 54 Concrete Definitions {#oml-concrete-glossary}
 
-## OML Annotation
-
-An OML Annotation maps to an [OWL2 Annotation] and is similarly
-a non-logical statement in an OML Context
-associating some information as the value of an
-OML AnnotationProperty for describing a subject (an OML TerminologyThing).
-
-{APIs: **Functional**}
+# OML Glossary of 49 Schema Concrete Definitions {#oml-schema-concrete-glossary}
 
 ## OML AnnotationEntry
 
@@ -590,7 +584,12 @@ an OML AnnotationEntry (for a given OML AnnotationProperty) is a triple:
 - a String value as the representation of some information
   about the subject in that context.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
+
+Normalized Relational Schema Table:
+- contextUUID: UUID (Foreign Key for: OML Context)
+- subjectUUID: UUID (Foreign Key for: OML TerminologyThing)
+- value: String
 
 ## OML AnnotationProperty
 
@@ -598,40 +597,94 @@ An OML AnnotationProperty maps to an [OWL2 AnnotationProperty]
 and is similarly a non-logical property for associating some information
 to any OML TerminologyThing in an OML Context.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
-## OML AnnotationPropertyTable
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- iri: IRI
+- abbrevIRI: AbbrevIRI
 
-For the OML tabular interchange representation,
-an OML AnnotationPropertyTable pairs an OML AnnotationProperty key
-with a set of OML AnnotationEntry values.
+## OML TerminologyGraph
 
-{APIs: **Functional**}
+An OML TerminologyGraph is an OML TerminologyBox with no statements our axioms involving OML Bundle(s).
 
-## OML AnnotationSubjectPropertyValue
+{APIs: **Normalized**, **Functional**}
 
-An OML AnnotationSubjectPropertyValue is an in-memory construct
-pairing an OML AnnotationProperty with a String value.
+Concrete definition with 1 generalization:
+ - OML TerminologyBox
 
-{APIs: **Normalized**, **EMF/CDO**}
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- kind: TerminologyGraphKind
+- iri: IRI
 
-## OML AnnotationSubjectTable
+## OML Bundle
 
-An OML AnnotationSubjectTable is an in-memory construct
-pairing an OML TerminologyThing subject key with a set
-of OML AnnotationSubjectPropertyValue tuples.
+An OML Bundle is an OML TerminologyBox that is
+an acyclic logical aggregate of other OML TerminologyBox(es)
+and that logically assert OML TerminologyBundleStatement(s).
 
-{APIs: **Normalized**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
-## OML AnonymousConceptTaxonomyAxiom
+Concrete definition with 1 generalization:
+ - OML TerminologyBox
 
-An OML AnonymousConceptTaxonomyAxiom is an anonymous taxonomy tree of DisjointUnionOfEntityAxioms.
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- kind: TerminologyGraphKind
+- iri: IRI
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+## OML ConceptDesignationTerminologyAxiom
 
-Concrete definition with 2 generalizations:
- - OML ConceptTreeDisjunction
- - OML DisjointUnionOfConceptsAxiom
+An OML ConceptDesignationTerminologyAxiom establishes
+a relationship from a source OML TerminologyBox
+where a designated OML Concept is defined to
+a target OML TerminologyGraph in which the internal
+structure of the designated OML Concept can be defined.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML TerminologyBoxAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- designatedConceptUUID: UUID (Foreign Key for: OML Concept)
+
+## OML TerminologyExtensionAxiom
+
+An OML TerminologyExtensionAxiom allows an extendingTerminology to
+make references (via OML TerminologyBoxStatement(s)) to OML TerminologyThing(s)
+declared within the transitive closure of the extendedTerminlogy.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML TerminologyBoxAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- extendedTerminologyUUID: UUID (Foreign Key for: OML TerminologyBox)
+
+## OML TerminologyNestingAxiom
+
+An OML TerminologyNestingAxiom provides support for relating
+a white-box OML TerminologyGraph as a nested terminology
+providing details about a black-box OML Concept defined
+in a nesting OML TerminologyBox.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML TerminologyBoxAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- nestingTerminologyUUID: UUID (Foreign Key for: OML TerminologyBox)
+- nestingContextUUID: UUID (Foreign Key for: OML Concept)
 
 ## OML Aspect
 
@@ -639,22 +692,130 @@ An OML Aspect is a kind of OML Entity of OML UnaryTermKind.
 It is intended to be used as a specialization parent
 for one or more OML ConceptualEntity.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Concrete definition with 2 generalizations:
  - OML Entity
  - OML UnaryTermKind
 
-## OML AspectSpecializationAxiom
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- name: LocalName
 
-An OML AspectSpecializationAxiom is a logical axiom
-about a taxonomic relationship between a specific OML Aspect
-and a general OML Entity.
+## OML Concept
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+An OML Concept is an OML ConceptualEntity of OML UnaryTermKind.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 3 generalizations:
+ - OML ConceptualEntity
+ - OML Entity
+ - OML UnaryTermKind
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- isAbstract: Boolean
+- name: LocalName
+
+## OML ReifiedRelationship
+
+An OML ReifiedRelationship is an OML ConceptualEntity and a kind of OML EntityRelationship
+where an instance has an intrinsic identity. This means that
+an OML ReifiedRelationship can be involved as the domain or the
+range of another OML EntityRelationship as well as the
+domain of an OML DataRelationshipFromEntity.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 3 generalizations:
+ - OML ConceptualEntity
+ - OML Entity
+ - OML EntityRelationship
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- sourceUUID: UUID (Foreign Key for: OML Entity)
+- targetUUID: UUID (Foreign Key for: OML Entity)
+- isAbstract: Boolean
+- isAsymmetric: Boolean
+- isEssential: Boolean
+- isFunctional: Boolean
+- isInverseEssential: Boolean
+- isInverseFunctional: Boolean
+- isIrreflexive: Boolean
+- isReflexive: Boolean
+- isSymmetric: Boolean
+- isTransitive: Boolean
+- name: LocalName
+- unreifiedPropertyName: LocalName
+- unreifiedInversePropertyName: Option[LocalName]
+
+## OML UnreifiedRelationship
+
+An OML UnreifiedRelationship is a kind of OML EntityRelationship
+where an instance has no intrinsic identity but rather structural
+equivalence semantics as a tuple of references. This means
+that an OML UnreifiedRelationship cannot be involved as the domain
+or range of any kind of OML DirectedBinaryRelationshipKind.
+
+{APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
- - OML SpecializationAxiom
+ - OML EntityRelationship
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- sourceUUID: UUID (Foreign Key for: OML Entity)
+- targetUUID: UUID (Foreign Key for: OML Entity)
+- isAsymmetric: Boolean
+- isEssential: Boolean
+- isFunctional: Boolean
+- isInverseEssential: Boolean
+- isInverseFunctional: Boolean
+- isIrreflexive: Boolean
+- isReflexive: Boolean
+- isSymmetric: Boolean
+- isTransitive: Boolean
+- name: LocalName
+
+## OML Scalar
+
+An OML Scalar corresponds to an OWL2 Declaration of an [OWL2 DataRange] with arity=1.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 2 generalizations:
+ - OML DataRange
+ - OML UnaryTermKind
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- name: LocalName
+
+## OML Structure
+
+An OML Structure would correspond to an OWL2 Declaration of an [OWL2 DataRange] with arity > 1.
+However, since OWL2 Datatypes in the [OWL2-DL] are restricted to have arity=1,
+the OML mapping to [OWL2-DL] involves a pattern-based usage of an [OWL2 Class] to represent an OML Structure.
+The arity corresponds to the cardinality of the set of ScalarDataProperty & StructuredDataProperty
+relationships whose domain is this structure.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 2 generalizations:
+ - OML Datatype
+ - OML UnaryTermKind
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- name: LocalName
 
 ## OML BinaryScalarRestriction
 
@@ -670,193 +831,19 @@ Facets:
 - [xsd:minLength]
 - [xsd:maxLength]
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
  - OML RestrictedDataRange
 
-## OML Bundle
-
-An OML Bundle is an OML TerminologyBox that is
-an acyclic logical aggregate of other OML TerminologyBoxes
-and that logically assert OML TerminologyBundleStatements.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML TerminologyBox
-
-## OML BundledTerminologyAxiom
-
-An OML BundledTerminologyAxiom identifies an OML TerminologyBox that an OML Bundle aggregates.
-An OML BundledTerminologyAxiom allows an OML Bundle to
-make references (via OML TerminologyStatements) to OML TerminologyThings
-within the transitive closure of a bundledTerminology.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML TerminologyBundleAxiom
-
-## OML Concept
-
-An OML Concept is an OML ConceptualEntity of OML UnaryTermKind.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 3 generalizations:
- - OML ConceptualEntity
- - OML Entity
- - OML UnaryTermKind
-
-## OML ConceptDesignationTerminologyAxiom
-
-An OML ConceptDesignationTerminologyAxiom establishes
-a relationship from a source OML TerminologyBox
-where a designated OML Concept is defined to
-a target OML TerminologyGraph in which the internal
-structure of the designated OML Concept can be defined.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML TerminologyBoxAxiom
-
-## OML ConceptInstance
-
-An OML ConceptInstance is an OML ConceptualEntitySingletonInstance classified by an OML Concept.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML ConceptualEntitySingletonInstance
-
-## OML ConceptSpecializationAxiom
-
-An OML ConceptSpecializationAxiom is a logical axiom
-about a taxonomic relationship between a specific and general
-OML Concept.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML SpecializationAxiom
-
-## OML DataStructureTuple
-
-An OML DataStructureTuple defines an structured tuple instance of an OML Structure.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML SingletonInstance
-
-## OML DescriptionBox
-
-An OML DescriptionBox maps to an [OWL2-DL Ontology]
-about [OWL2-DL NamedIndividuals] mapped from OML TerminologyInstanceAssertions.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML Context
-
-## OML DescriptionBoxExtendsClosedWorldDefinitions
-
-An OML DescriptionBoxExtendsClosedWorldDefinitions specifies
-an OML DescriptionBoxRelationship from an OML DescriptionBox
-to an OML TerminologyBox such that an OML SingletonInstance defined in the
-former can be an instance of an OML Term defined in the latter.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML DescriptionBoxRelationship
-
-## OML DescriptionBoxRefinement
-
-An OML DescriptionBoxRefinement is an OML DescriptionBoxRelationship
-from an OML DescriptionBox to another OML DescriptionBox where
-the former refines the descriptions of the latter.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML DescriptionBoxRelationship
-
-## OML EntityExistentialRestrictionAxiom
-
-An OML EntityExistentialRestrictionAxiom maps
-to an [OWL2 Object Property Existential Restriction].
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML EntityRestrictionAxiom
-
-## OML EntityScalarDataProperty
-
-An OML EntityScalarDataProperty is an OML DataRelationship
-whose domain is an OML Entity and range is an OML DataRange.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 3 generalizations:
- - OML DataRelationship
- - OML DataRelationshipFromEntity
- - OML DataRelationshipToScalar
-
-## OML EntityScalarDataPropertyExistentialRestrictionAxiom
-
-An OML EntityScalarDataPropertyExistentialRestrictionAxiom maps to an
-OWL2 DataSomeValuesFrom restriction (the range must be explicitly defined as a Scalar datatype)
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML EntityScalarDataPropertyRestrictionAxiom
-
-## OML EntityScalarDataPropertyParticularRestrictionAxiom
-
-*
-An OML EntityScalarDataPropertyParticularRestrictionAxiom maps to an OWL2 DataHasValue restriction.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML EntityScalarDataPropertyRestrictionAxiom
-
-## OML EntityScalarDataPropertyUniversalRestrictionAxiom
-
-An OML EntityScalarDataPropertyUniversalRestrictionAxiom maps to an
-OWL2 DataAllValuesFrom (the range must be explicitly defined as a Scalar datatype)
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML EntityScalarDataPropertyRestrictionAxiom
-
-## OML EntityStructuredDataProperty
-
-An OML EntityStructuredDataProperty is an OML DataRelationship
-whose domain is an OML Entity and range is an OML Structure.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 3 generalizations:
- - OML DataRelationship
- - OML DataRelationshipFromEntity
- - OML DataRelationshipToStructure
-
-## OML EntityUniversalRestrictionAxiom
-
-An OML EntityUniversalRestrictionAxiom maps
-to an [OWL2 Object Property Universal Restriction].
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML EntityRestrictionAxiom
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
+- length: Option[Int]
+- minLength: Option[Int]
+- maxLength: Option[Int]
+- name: LocalName
 
 ## OML IRIScalarRestriction
 
@@ -872,10 +859,20 @@ Facets:
 - [xsd:maxLength]
 - [xsd:pattern]
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
  - OML RestrictedDataRange
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
+- length: Option[Int]
+- minLength: Option[Int]
+- maxLength: Option[Int]
+- name: LocalName
+- pattern: Option[Pattern]
 
 ## OML NumericScalarRestriction
 
@@ -908,10 +905,20 @@ Facets:
 - [xsd:minExclusive]
 - [xsd:maxExclusive]
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
  - OML RestrictedDataRange
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
+- minExclusive: Option[LexicalNumber]
+- minInclusive: Option[LexicalNumber]
+- maxExclusive: Option[LexicalNumber]
+- maxInclusive: Option[LexicalNumber]
+- name: LocalName
 
 ## OML PlainLiteralScalarRestriction
 
@@ -928,142 +935,37 @@ Facets:
 - [xsd:maxLength]
 - [xsd:pattern]
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
  - OML RestrictedDataRange
 
-## OML ReifiedRelationship
-
-An OML ReifiedRelationship is an OML ConceptualEntity and a kind of OML EntityRelationship
-where an instance has an intrinsic identity. This means that
-an OML ReifiedRelationship can be involved as the domain or the
-range of another OML EntityRelationship as well as the
-domain of an OML DataRelationshipFromEntity.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 3 generalizations:
- - OML ConceptualEntity
- - OML Entity
- - OML EntityRelationship
-
-## OML ReifiedRelationshipInstance
-
-An OML ReifiedRelationshipInstance is an OML ConceptualEntitySingletonInstance  classified by an OML ReifiedRelationship.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML ConceptualEntitySingletonInstance
-
-## OML ReifiedRelationshipInstanceDomain
-
-An OML ReifiedRelationshipInstanceDomain specifies which OML ConceptualEntitySingletonInstance
-plays the role of the domain for an OML ReifiedRelationshipInstance.
-An OML ReifiedRelationshipInstanceDomain has no intrinsic identity; instead,
-an OML ReifiedRelationshipInstanceDomain is semantically equivalent
-to another OML ReifiedRelationshipInstanceDomain referencing the same property and domain.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML TerminologyInstanceAssertion
-
-## OML ReifiedRelationshipInstanceRange
-
-An OML ReifiedRelationshipInstanceRange specifies which OML ConceptualEntitySingletonInstance
-plays the role of the range for an OML ReifiedRelationshipInstance.
-An OML ReifiedRelationshipInstanceRange has no intrinsic identity; instead,
-an OML ReifiedRelationshipInstanceRange is semantically equivalent
-to another OML ReifiedRelationshipInstanceRange referencing the same property and range.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML TerminologyInstanceAssertion
-
-## OML ReifiedRelationshipSpecializationAxiom
-
-An OML ReifiedRelationshipSpecializationAxiom is a logical axiom
-about a taxonomic relationship between a specific and general
-OML ReifiedRelationship.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML SpecializationAxiom
-
-## OML RootConceptTaxonomyAxiom
-
-An OML RootConceptTaxonomyAxiom asserts that, in the context of a Bundle, a particular Entity
-is the root of a taxonomy of specializations of that Entity.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 2 generalizations:
- - OML ConceptTreeDisjunction
- - OML TerminologyBundleStatement
-
-## OML Scalar
-
-An OML Scalar corresponds to an OWL2 Declaration of a Datatype with arity=1.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 2 generalizations:
- - OML DataRange
- - OML UnaryTermKind
-
-## OML ScalarDataProperty
-
-An OML ScalarDataProperty is an OML DataRelationship
-whose domain is an OML Structure and range is an OML DataRange.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 3 generalizations:
- - OML DataRelationship
- - OML DataRelationshipFromStructure
- - OML DataRelationshipToScalar
-
-## OML ScalarDataPropertyValue
-
-An OML ScalarDataPropertyValue defines a tuple for representing the atomic String value
-of an OML DataRelationshipToScalar for a particular OML SingletonInstance.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML TerminologyInstanceAssertion
-
-## OML ScalarOneOfLiteralAxiom
-
-An OML ScalarOneOfLiteralAxiom specifies a literal in a ScalarOneOfRestriction data range.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML Axiom
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
+- length: Option[Int]
+- minLength: Option[Int]
+- maxLength: Option[Int]
+- name: LocalName
+- langRange: Option[LangRange]
+- pattern: Option[Pattern]
 
 ## OML ScalarOneOfRestriction
 
 An OML ScalarOneOfRestriction is a data range that specifies how a scalar is a restricted set of literal values of another.
 Semantics: OWL2 DataOneOf
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
  - OML RestrictedDataRange
 
-## OML SpecificDisjointConceptAxiom
-
-An OML SpecificDisjointConceptAxiom specifies a leaf in a taxonomy tree.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML DisjointUnionOfConceptsAxiom
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
+- name: LocalName
 
 ## OML StringScalarRestriction
 
@@ -1085,98 +987,35 @@ Facets:
 - [xsd:maxLength]
 - [xsd:pattern]
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
  - OML RestrictedDataRange
 
-## OML Structure
-
-An OML Structure would correspond to an OWL2 Declaration of a Datatype with arity > 1.
-However, since OWL2 Datatypes in the [OWL2-DL] are restricted to have arity=1,
-the OML mapping to [OWL2-DL] involves a pattern-based usage of an [OWL2-DL Class] to represent an OML Structure.
-The arity corresponds to the cardinality of the set of ScalarDataProperty & StructuredDataProperty
-relationships whose domain is this structure.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 2 generalizations:
- - OML Datatype
- - OML UnaryTermKind
-
-## OML StructuredDataProperty
-
-An OML StructuredDataProperty is an OML DataRelationship
-whose domain is an OML Structure and range is an OML Structure.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 3 generalizations:
- - OML DataRelationship
- - OML DataRelationshipFromStructure
- - OML DataRelationshipToStructure
-
-## OML StructuredDataPropertyValue
-
-An OML StructuredDataPropertyValue defines a tuple for representing the structured tuple value
-of an OML DataRelationshipToStructure for a particular OML SingletonInstance.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML TerminologyInstanceAssertion
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
+- length: Option[Int]
+- minLength: Option[Int]
+- maxLength: Option[Int]
+- name: LocalName
+- pattern: Option[Pattern]
 
 ## OML SynonymScalarRestriction
 
 An OML SynonymScalarRestriction is a data range that is defined as a synonym for another (i.e. the restrictedRange).
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
  - OML RestrictedDataRange
 
-## OML TerminologyExtensionAxiom
-
-An OML TerminologyExtensionAxiom allows an extendingTerminology to
-make references (via TerminologyStatements) to TerminologyThings
-within the transitive closure of the extendedTerminlogy.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML TerminologyBoxAxiom
-
-## OML TerminologyExtent
-
-An OML TerminologyExtent defines an in-memory tuple
-about each OML Context involved in modeling and reasoning about domain-specific
-vocabularies and systems descriptions using such vocabularies:
-- An OML TerminologyGraph for defining a vocabulary about a domain or a description of a system in a domain;
-- An OML Bundle for aggregating OML TerminologyBoxes for as modular [OWL2-DL Ontologies] for monotonic refinement and reasoning;
-- An OML DescriptionBox for describing actual systems according to one or more domain-specific OML TerminologyBox vocabularies.
-
-{APIs: **Functional**}
-
-## OML TerminologyGraph
-
-An OML TerminologyGraph is an OML TerminologyBox with no statements our axioms involving OML Bundles.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML TerminologyBox
-
-## OML TerminologyNestingAxiom
-
-An OML TerminologyNestingAxiom provides support for relating
-a white-box OML TerminologyGraph as a nested terminology
-providing details about a black-box OML Concept defined
-in a nesting OML TerminologyBox.
-
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
-
-Concrete definition with 1 generalization:
- - OML TerminologyBoxAxiom
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
+- name: LocalName
 
 ## OML TimeScalarRestriction
 
@@ -1193,23 +1032,479 @@ Facets:
 - [xsd:minExclusive]
 - [xsd:maxExclusive]
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
  - OML RestrictedDataRange
 
-## OML UnreifiedRelationship
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
+- minExclusive: Option[LexicalTime]
+- minInclusive: Option[LexicalTime]
+- maxExclusive: Option[LexicalTime]
+- maxInclusive: Option[LexicalTime]
+- name: LocalName
 
-An OML UnreifiedRelationship is a kind of OML EntityRelationship
-where an instance has no intrinsic identity but rather structural
-equivalence semantics as a tuple of references. This means
-that an OML UnreifiedRelationship cannot be involved as the domain
-or range of any kind of OML DirectedBinaryRelationshipKind.
+## OML EntityScalarDataProperty
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+An OML EntityScalarDataProperty is an OML DataRelationship
+whose domain is an OML Entity and range is an OML DataRange.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 3 generalizations:
+ - OML DataRelationship
+ - OML DataRelationshipFromEntity
+ - OML DataRelationshipToScalar
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- domainUUID: UUID (Foreign Key for: OML Entity)
+- rangeUUID: UUID (Foreign Key for: OML DataRange)
+- isIdentityCriteria: Boolean
+- name: LocalName
+
+## OML EntityStructuredDataProperty
+
+An OML EntityStructuredDataProperty is an OML DataRelationship
+whose domain is an OML Entity and range is an OML Structure.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 3 generalizations:
+ - OML DataRelationship
+ - OML DataRelationshipFromEntity
+ - OML DataRelationshipToStructure
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- domainUUID: UUID (Foreign Key for: OML Entity)
+- rangeUUID: UUID (Foreign Key for: OML Structure)
+- isIdentityCriteria: Boolean
+- name: LocalName
+
+## OML ScalarDataProperty
+
+An OML ScalarDataProperty is an OML DataRelationship
+whose domain is an OML Structure and range is an OML DataRange.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 3 generalizations:
+ - OML DataRelationship
+ - OML DataRelationshipFromStructure
+ - OML DataRelationshipToScalar
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- domainUUID: UUID (Foreign Key for: OML Structure)
+- rangeUUID: UUID (Foreign Key for: OML DataRange)
+- name: LocalName
+
+## OML StructuredDataProperty
+
+An OML StructuredDataProperty is an OML DataRelationship
+whose domain is an OML Structure and range is an OML Structure.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 3 generalizations:
+ - OML DataRelationship
+ - OML DataRelationshipFromStructure
+ - OML DataRelationshipToStructure
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- domainUUID: UUID (Foreign Key for: OML Structure)
+- rangeUUID: UUID (Foreign Key for: OML Structure)
+- name: LocalName
+
+## OML AspectSpecializationAxiom
+
+An OML AspectSpecializationAxiom is a logical axiom
+about a taxonomic relationship between a specific OML Aspect
+and a general OML Entity.
+
+{APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
- - OML EntityRelationship
+ - OML SpecializationAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- superAspectUUID: UUID (Foreign Key for: OML Aspect)
+- subEntityUUID: UUID (Foreign Key for: OML Entity)
+
+## OML ConceptSpecializationAxiom
+
+An OML ConceptSpecializationAxiom is a logical axiom
+about a taxonomic relationship between a specific and general
+OML Concept.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML SpecializationAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- superConceptUUID: UUID (Foreign Key for: OML Concept)
+- subConceptUUID: UUID (Foreign Key for: OML Concept)
+
+## OML ReifiedRelationshipSpecializationAxiom
+
+An OML ReifiedRelationshipSpecializationAxiom is a logical axiom
+about a taxonomic relationship between a specific and general
+OML ReifiedRelationship.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML SpecializationAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- superRelationshipUUID: UUID (Foreign Key for: OML ReifiedRelationship)
+- subRelationshipUUID: UUID (Foreign Key for: OML ReifiedRelationship)
+
+## OML EntityExistentialRestrictionAxiom
+
+An OML EntityExistentialRestrictionAxiom maps
+to an [OWL2 Object Property Existential Restriction].
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML EntityRestrictionAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- restrictedRelationUUID: UUID (Foreign Key for: OML EntityRelationship)
+- restrictedDomainUUID: UUID (Foreign Key for: OML Entity)
+- restrictedRangeUUID: UUID (Foreign Key for: OML Entity)
+
+## OML EntityUniversalRestrictionAxiom
+
+An OML EntityUniversalRestrictionAxiom maps
+to an [OWL2 Object Property Universal Restriction].
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML EntityRestrictionAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- restrictedRelationUUID: UUID (Foreign Key for: OML EntityRelationship)
+- restrictedDomainUUID: UUID (Foreign Key for: OML Entity)
+- restrictedRangeUUID: UUID (Foreign Key for: OML Entity)
+
+## OML EntityScalarDataPropertyExistentialRestrictionAxiom
+
+An OML EntityScalarDataPropertyExistentialRestrictionAxiom maps to an
+OWL2 DataSomeValuesFrom restriction (the range must be explicitly defined as a Scalar datatype)
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML EntityScalarDataPropertyRestrictionAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- restrictedEntityUUID: UUID (Foreign Key for: OML Entity)
+- scalarPropertyUUID: UUID (Foreign Key for: OML EntityScalarDataProperty)
+- scalarRestrictionUUID: UUID (Foreign Key for: OML DataRange)
+
+## OML EntityScalarDataPropertyParticularRestrictionAxiom
+
+*
+An OML EntityScalarDataPropertyParticularRestrictionAxiom maps to an OWL2 DataHasValue restriction.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML EntityScalarDataPropertyRestrictionAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- restrictedEntityUUID: UUID (Foreign Key for: OML Entity)
+- scalarPropertyUUID: UUID (Foreign Key for: OML EntityScalarDataProperty)
+- literalValue: LexicalValue
+
+## OML EntityScalarDataPropertyUniversalRestrictionAxiom
+
+An OML EntityScalarDataPropertyUniversalRestrictionAxiom maps to an
+OWL2 DataAllValuesFrom (the range must be explicitly defined as a Scalar datatype)
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML EntityScalarDataPropertyRestrictionAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- restrictedEntityUUID: UUID (Foreign Key for: OML Entity)
+- scalarPropertyUUID: UUID (Foreign Key for: OML EntityScalarDataProperty)
+- scalarRestrictionUUID: UUID (Foreign Key for: OML DataRange)
+
+## OML ScalarOneOfLiteralAxiom
+
+An OML ScalarOneOfLiteralAxiom specifies a literal in a ScalarOneOfRestriction data range.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML Axiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- axiomUUID: UUID (Foreign Key for: OML ScalarOneOfRestriction)
+- value: LexicalValue
+
+## OML BundledTerminologyAxiom
+
+An OML BundledTerminologyAxiom identifies an OML TerminologyBox that an OML Bundle aggregates.
+An OML BundledTerminologyAxiom allows an OML Bundle to
+make references (via OML TerminologyStatement(s)) to OML TerminologyThing(s)
+within the transitive closure of a bundledTerminology.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML TerminologyBundleAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- terminologyBundleUUID: UUID (Foreign Key for: OML Bundle)
+- bundledTerminologyUUID: UUID (Foreign Key for: OML TerminologyBox)
+
+## OML AnonymousConceptTaxonomyAxiom
+
+An OML AnonymousConceptTaxonomyAxiom is an anonymous taxonomy tree of DisjointUnionOfEntityAxioms.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 2 generalizations:
+ - OML ConceptTreeDisjunction
+ - OML DisjointUnionOfConceptsAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- bundleUUID: UUID (Foreign Key for: OML Bundle)
+- disjointTaxonomyParentUUID: UUID (Foreign Key for: OML ConceptTreeDisjunction)
+
+## OML RootConceptTaxonomyAxiom
+
+An OML RootConceptTaxonomyAxiom asserts that, in the context of a Bundle, a particular Entity
+is the root of a taxonomy of specializations of that Entity.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 2 generalizations:
+ - OML ConceptTreeDisjunction
+ - OML TerminologyBundleStatement
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- bundleUUID: UUID (Foreign Key for: OML Bundle)
+- rootUUID: UUID (Foreign Key for: OML Concept)
+
+## OML SpecificDisjointConceptAxiom
+
+An OML SpecificDisjointConceptAxiom specifies a leaf in a taxonomy tree.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML DisjointUnionOfConceptsAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- bundleUUID: UUID (Foreign Key for: OML Bundle)
+- disjointTaxonomyParentUUID: UUID (Foreign Key for: OML ConceptTreeDisjunction)
+- disjointLeafUUID: UUID (Foreign Key for: OML Concept)
+
+## OML ConceptInstance
+
+An OML ConceptInstance is an OML ConceptualEntitySingletonInstance classified by an OML Concept.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML ConceptualEntitySingletonInstance
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- descriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+- singletonConceptClassifierUUID: UUID (Foreign Key for: OML Concept)
+- name: LocalName
+
+## OML DataStructureTuple
+
+An OML DataStructureTuple defines an structured tuple instance of an OML Structure.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML SingletonInstance
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- dataStructureTypeUUID: UUID (Foreign Key for: OML Structure)
+- structuredDataPropertyValueUUID: UUID (Foreign Key for: OML StructuredDataPropertyValue)
+- name: LocalName
+
+## OML DescriptionBox
+
+An OML DescriptionBox maps to an [OWL2-DL Ontology]
+about [OWL2-DL NamedIndividuals] mapped from OML TerminologyInstanceAssertion(s).
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML Context
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- kind: DescriptionKind
+- iri: IRI
+
+## OML DescriptionBoxExtendsClosedWorldDefinitions
+
+An OML DescriptionBoxExtendsClosedWorldDefinition specifies
+an OML DescriptionBoxRelationship from an OML DescriptionBox
+to an OML TerminologyBox such that an OML SingletonInstance defined in the
+former can be an instance of an OML Term defined in the latter.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML DescriptionBoxRelationship
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- descriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+- closedWorldDefinitionsUUID: UUID (Foreign Key for: OML TerminologyBox)
+
+## OML DescriptionBoxRefinement
+
+An OML DescriptionBoxRefinement is an OML DescriptionBoxRelationship
+from an OML DescriptionBox to another OML DescriptionBox where
+the former refines the descriptions of the latter.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML DescriptionBoxRelationship
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- refiningDescriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+- refinedDescriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+
+## OML ReifiedRelationshipInstance
+
+An OML ReifiedRelationshipInstance is an OML ConceptualEntitySingletonInstance  classified by an OML ReifiedRelationship.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML ConceptualEntitySingletonInstance
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- descriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+- singletonReifiedRelationshipClassifierUUID: UUID (Foreign Key for: OML ReifiedRelationship)
+- name: LocalName
+
+## OML ReifiedRelationshipInstanceDomain
+
+An OML ReifiedRelationshipInstanceDomain specifies which OML ConceptualEntitySingletonInstance
+plays the role of the domain for an OML ReifiedRelationshipInstance.
+An OML ReifiedRelationshipInstanceDomain has no intrinsic identity; instead,
+an OML ReifiedRelationshipInstanceDomain is semantically equivalent
+to another OML ReifiedRelationshipInstanceDomain referencing the same property and domain.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML TerminologyInstanceAssertion
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- descriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+- reifiedRelationshipInstanceUUID: UUID (Foreign Key for: OML ReifiedRelationshipInstance)
+- domainUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
+- name: LocalName
+
+## OML ReifiedRelationshipInstanceRange
+
+An OML ReifiedRelationshipInstanceRange specifies which OML ConceptualEntitySingletonInstance
+plays the role of the range for an OML ReifiedRelationshipInstance.
+An OML ReifiedRelationshipInstanceRange has no intrinsic identity; instead,
+an OML ReifiedRelationshipInstanceRange is semantically equivalent
+to another OML ReifiedRelationshipInstanceRange referencing the same property and range.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML TerminologyInstanceAssertion
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- descriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+- reifiedRelationshipInstanceUUID: UUID (Foreign Key for: OML ReifiedRelationshipInstance)
+- rangeUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
+- name: LocalName
+
+## OML ScalarDataPropertyValue
+
+An OML ScalarDataPropertyValue defines a tuple for representing the atomic String value
+of an OML DataRelationshipToScalar for a particular OML SingletonInstance.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML TerminologyInstanceAssertion
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- singletonInstanceUUID: UUID (Foreign Key for: OML SingletonInstance)
+- scalarDataPropertyUUID: UUID (Foreign Key for: OML DataRelationshipToScalar)
+- name: LocalName
+- scalarPropertyValue: String
+
+## OML StructuredDataPropertyValue
+
+An OML StructuredDataPropertyValue defines a tuple for representing the structured tuple value
+of an OML DataRelationshipToStructure for a particular OML SingletonInstance.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML TerminologyInstanceAssertion
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- singletonInstanceUUID: UUID (Foreign Key for: OML SingletonInstance)
+- structuredDataPropertyUUID: UUID (Foreign Key for: OML DataRelationshipToStructure)
+- structuredPropertyTupleUUID: UUID (Foreign Key for: OML DataStructureTuple)
+- name: LocalName
 
 ## OML UnreifiedRelationshipInstanceTuple
 
@@ -1220,7 +1515,62 @@ An OML UnreifiedRelationshipInstanceTuple has no intrinsic identity; instead,
 an OML UnreifiedRelationshipInstanceTuple is semantically equivalent
 to another OML UnreifiedRelationshipInstanceTuple referencing the same domain, property and range.
 
-{APIs: **Normalized**, **Functional**, **EMF/CDO**}
+{APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
  - OML TerminologyInstanceAssertion
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- descriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+- unreifiedRelationshipUUID: UUID (Foreign Key for: OML UnreifiedRelationship)
+- domainUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
+- rangeUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
+- name: LocalName
+
+# OML Glossary of 3 Functional API Concrete Definitions {#oml-functional-concrete-glossary}
+
+## OML Annotation
+
+An OML Annotation maps to an [OWL2 Annotation] and is similarly
+a non-logical statement in an OML Context
+associating some information as the value of an
+OML AnnotationProperty for describing a subject (an OML TerminologyThing).
+
+{APIs: **Functional**}
+
+## OML AnnotationPropertyTable
+
+For the OML tabular interchange representation,
+an OML AnnotationPropertyTable pairs an OML AnnotationProperty key
+with a set of OML AnnotationEntry values.
+
+{APIs: **Functional**}
+
+## OML TerminologyExtent
+
+An OML TerminologyExtent defines an in-memory tuple
+about each OML Context involved in modeling and reasoning about domain-specific
+vocabularies and systems descriptions using such vocabularies:
+- An OML TerminologyGraph for defining a vocabulary about a domain or a description of a system in a domain;
+- An OML Bundle for aggregating OML TerminologyBox(es) for as modular [OWL2-DL Ontologies] for monotonic refinement and reasoning;
+- An OML DescriptionBox for describing actual systems according to one or more domain-specific OML TerminologyBox vocabularies.
+
+{APIs: **Functional**}
+
+# OML Glossary of 2 EMF/CDO API Concrete Definitions {#oml-emf-cdo-concrete-glossary}
+
+## OML AnnotationSubjectPropertyValue
+
+An OML AnnotationSubjectPropertyValue is an in-memory construct
+pairing an OML AnnotationProperty with a String value.
+
+{APIs: **EMF/CDO**}
+
+## OML AnnotationSubjectTable
+
+An OML AnnotationSubjectTable is an in-memory construct
+pairing an OML TerminologyThing subject key with a set
+of OML AnnotationSubjectPropertyValue tuples.
+
+{APIs: **EMF/CDO**}
