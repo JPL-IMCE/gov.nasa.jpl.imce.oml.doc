@@ -1503,7 +1503,6 @@ Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
 - singletonInstanceUUID: UUID (Foreign Key for: OML SingletonInstance)
 - structuredDataPropertyUUID: UUID (Foreign Key for: OML DataRelationshipToStructure)
-- structuredPropertyTupleUUID: UUID (Foreign Key for: OML DataStructureTuple)
 - name: LocalName
 
 ## OML UnreifiedRelationshipInstanceTuple
