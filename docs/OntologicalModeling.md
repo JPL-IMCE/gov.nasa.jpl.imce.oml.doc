@@ -38,31 +38,47 @@ The notions of OML Context, OML Annotation, OML AnnotationProperty are described
 An OML Context maps to an [OWL2-DL Ontology] with a set of [OWL2 Axioms] and [SWRL] rules.
 On first order, OML distinguishes between two kinds of OML Context(s):
 
-- An OML TerminologyBox corresponds to a so-called [Tbox Ontology] for defining the vocabulary of a particular domain or the description of a system using domain-specific vocabularies.
+- An OML TerminologyBox corresponds to a so-called [Tbox Ontology].
 
-  The distinction between definitions and descriptions corresponds to the kind of OML TerminologyBox: `OpenWorldDefinitions` vs `ClosedWorldDesignations` respectively.
+  There are two kinds of OML TerminologyBox(es):
+  - `OpenWorldDefinitions`
   
-- An OML DesignationBox corresponds to a so-called [Abox Ontology] : it defines individuals describing a particular state of affairs of a system described in a closed OML TerminologyBox.
+  	This is for defining the vocabulary of a particular domain.
+  	
+  - `ClosedWorldDesignations`
+  
+  	This is for designating the individual parts and connections that constitute the topological structure of a system
+  	described using domain-specific vocabularies.
+
+- An OML DesignationBox corresponds to a so-called [Abox Ontology].
+
+	This is for describing a particular state of affairs of the parts and connections 
+	of a system described in a `ClosedWorldDesignations` OML TerminologyBox.
 
 ### Canonical Parsing
 
-The [OWL2 Structural Specification] defines the [Canonical Parsing of OWL2 Ontologies] from the concrete syntax representation of an ontology document 
-(e.g., [OWL2 Functional Syntax], [OWL2 RDF/XML] and [OWL2 XML]) to an [OWL2 Ontology] that is an instance of the abstract syntax defined by the [OWL2 Structural Specification].
-This canonical parsing process is specified in terms of the criteria of [OWL2 Structural Equivalence] and of the UML class diagrams that define the [OWL2 Structural Specification].
+The [OWL2 Structural Specification] defines the [Canonical Parsing of OWL2 Ontologies] 
+from the concrete syntax representation of an ontology document 
+(e.g., [OWL2 Functional Syntax], [OWL2 RDF/XML] and [OWL2 XML]) 
+to an [OWL2 Ontology] that is an instance of the abstract syntax defined by the [OWL2 Structural Specification].
+This canonical parsing process is specified in terms of the criteria 
+of [OWL2 Structural Equivalence] and of the UML class diagrams that define the [OWL2 Structural Specification].
 
-OML adopts a similar strategy; however, in lieu of using a very simple form UML class diagrams, the OML specification is used for generating a normalized relational database schema
-whose tables correspond precisely to the [concrete definitions of OML](GLOSSARY.md#oml-concrete-glossary). 
+OML adopts a similar strategy; however, in lieu of using a very simple form UML class diagrams, 
+the OML specification is the basis for generating a normalized relational database schema
+(see the [concrete schema definitions of OML](GLOSSARY.md#oml-schema-concrete-glossary)). 
 
- a set of normalized relational database schema tables.
-This normalized schema is designed to ensure that structurally equivalent OML Context(s) have identical representations in terms of instance data of the normalized schema.
-This strong property ensures that 
-
-
-Similarly, OML has an abstract syntax and multiple concrete syntaxes.
-The OML abstract syntax is written in the Eclipse Xcore language; however, through code generation, it has equivalent Application Programming Interfaces (API) for different languages/technologies.
-The OML Xcore specification generates an Eclipse EMF/CDO API via the Eclipse Xcore framework.
-Additional code generators produce two di
-
- distinction between concrete and abstract syntax for a language is important to 
-The [OWL2 Structural Specification] distinguishes between a cothe concrete syntax of an ontology document (e.g., Functional Syntax, N-triples, OWL/XML, RDF/XML...) 
-and the abstract syntax of an [OWL2 Ontology] per the structural specification.
+This normalized schema is designed to ensure that structurally equivalent OML Context(s) 
+have identical representations in terms of instance data of the normalized schema.
+Since an OML Context maps to an [OWL2 Ontology] and that a given [OWL2 Ontology] can be serialized
+in multiple documents that are structurally equivalent to each other, it follows
+that a given OML Context is structurally equivalent to all the serializations of ontology documents
+that are structurally equivalent to its corresponding [OWL2 Ontology].
+This propety is particularly important for change management because the OML normalized schema table
+serialization ensures that any change in serialization is structurally significant by definition.
+In contrast, change management with the serialization of OML Context(s) based on their mapping to [OWL2 Ontologies] 
+would involve comparing serializations of ontology documents; such as [OWL2 RDF/XML], which is notorious for
+allowing syntactically different serializations for structurally equivalent ontologies. 
+This suggests that it is practically preferable to use the OML normalized schema table serialization
+under change management because any change in serialization is structurally significant and use OML converters
+to produce [OWL2 Ontology] documents as needed for [OWL2-DL] reasoning. 
