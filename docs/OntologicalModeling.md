@@ -79,9 +79,22 @@ On first order, OML distinguishes between two kinds of OML Context(s):
 
 ## Organizing & Modularizing OML TerminologyBox(es)
 
-OML distinguishes between two kinds of OML TerminologyBox(es):
+OML represents a careful use of a subset of [OWL2-DL] for collaborative authoring of vocabularies, designations and descriptions as [OWL2 Ontologies].
+OML is generally biased towards partitionning the use of the vocabulary of [OWL2 Axioms] for cognitively different purposes in vocabulary management.
+  
+For example:
+  
+  - Disjointness is used only for representing the semantic commitment to the [Unique Name Assumption] in the context of an OML Bundle only.
+  
+  - Cardinality restrictions are used only for representing the semantic commitment to singletons in `ClosedWorldDesignations` OML TerminologyBox(es).
+   
+  - Named individuals are restricted to OML DescriptionBox(es) for representing intrinsically distinguishable and distinct individuals
+    in the `real world` based on the semantics of [OWL2 Key Axiom](s) and the values of 
+    the domain-specific `isIdentityCriteria=true` OML EntityDataProperty(-ies) asserted for them.   
 
-- OML TerminologyGraph where the emphasis is on defining a domain-specific vocabulary or system-specific designations.
+This restricted use of the [OWL2-DL] vocabulary is reflected in the distinction among two kind of OML TerminologyBox(es) mapped to [OWL2 Ontologies]:
+
+- An OML TerminologyGraph where the emphasis is on defining a domain-specific vocabulary or system-specific designations.
 
   Conceptually, it is useful to think about OML Concept(s) as defining the `nouns` of a vocabulary or of a system designation
   and about OML EntityRelationship(s) as defining `verbs` of a vocabulary or of a system designation. OML restricts a `verb` to
@@ -120,7 +133,6 @@ OML distinguishes between two kinds of OML TerminologyBox(es):
   answering legitimate questions about the intended purpose of the vocabulary nor what it actually means 
   (e.g., What is the difference between a `Bicycle` and a `Car`? What differentiates between a `Car` and a `Vehicle`?). 
   
-  
   In this example, all four OML Concept(s) are defined nominally -- they are distinguishable only by their IRI.
   There is no ontologically significant distinction among them; which is a legitimate concern for rigorous modeling
   because the vocabulary provides no useful guidance for proper usage. To address this problem, the vocabulary would have
@@ -146,32 +158,59 @@ OML distinguishes between two kinds of OML TerminologyBox(es):
   TODO: explain that non-superflous definitions provide important guidance for users because the signature of relationships
   associates to the OML Concept one or more patterns of usage.
 
-- OML Bundle
+- An OML Bundle where the emphasis is on explicitly encoding commitments to disjunctions among OML Concept(s) defined in one or more bundled OML TerminologyBox(es).
 
+  Manually specifying [OWL2 Disjoint Classes Axiom] and [OWL2 Disjoint Union of Class Expressions Axiom] can be tedious and
+  error-prone; particularly when these axioms refer to [OWL2 Classes] defined across multiple domain-specific [OWL2 Ontologies] that are 
+  under revision control by different domain-specific subject-matter experts. It is generally difficult to predict what impact a particular
+  change in an [OWL2 Ontology] will have on disjointness axioms previously asserted. In OML, it is the responsibility of an author
+  to specify the scope of the bundle -- i.e., identifying the OML TerminologyBox(es) to include in the bundle. The OML TerminologyBundleStatement(s)
+  specifying disjointness axioms among OML Concept(s) declared directly or indirectly in the bundled OML TerminologyBox(es) could be authored
+  manually; however, OML provides tools for inferring such axioms based on the [Unique Name Assumption] that concrete OML Concept(s) 
+  that do not have any specialization specify distinct things in the bundled domain-specific vocabularies.
+  
+  Since OML relies extensively on encoding ontological distinctions among concepts using relationship restrictions of various kinds,
+  OML does not provide support for asserting the disjointness of OML EntityRelationship(s) or OML DataRelationship(s) because doing
+  so would significantly increase the cognitive difficulty in understanding the resulting vocabulary due to the counter-intuitive interactions
+  between relationship restrictions and relationship disjointness.
+  
 ### Canonical Parsing
 
-The [OWL2 Structural Specification] defines the [Canonical Parsing of OWL2 Ontologies] 
-from the concrete syntax representation of an ontology document 
-(e.g., [OWL2 Functional Syntax], [OWL2 RDF/XML] and [OWL2 XML]) 
-to an [OWL2 Ontology] that is an instance of the abstract syntax defined by the [OWL2 Structural Specification].
-This canonical parsing process is specified in terms of the criteria 
-of [OWL2 Structural Equivalence] and of the UML class diagrams that define the [OWL2 Structural Specification].
+OML provides a strong guarantee that any structurally significant difference between OML Context(s) ontoloties is precisely reflected
+in the syntactical differences of their representation in the OML normalized relational schema table serialization without superfluous change noise.
+In practice, this strong guarantee is important to enable multiple teams to collaborate on developing OML Context ontologies
+for authoring and evolving multiple inter-related domain-specific vocabularies; for bundling them to reflect commitments to domain-specific distinctions
+among OML Concept(s); for using such bundles for describing the topology and structure of systems and for describing particular 
+configurations in particular state of affairs of such topologies & structures with named individuals identified according to all relevant identity criteria.
 
-OML adopts a similar strategy; however, in lieu of using a very simple form UML class diagrams, 
-the OML specification is the basis for generating a normalized relational database schema
-(see the [concrete schema definitions of OML](GLOSSARY.md#oml-schema-concrete-glossary)). 
+This strong guarantee is the result of lessons learned in managing ontologies where partitioning the use of ontologies as described above is important
+but practically insufficient for managing change because of the serialization variability of [OWL2 Ontologies]. The [OWL2 Structural Specification] is
+remarkable in that it one of very few machine-readable language standards where the specification for what it means to parse the concrete syntax representation
+of a document into an internal representation in that language is based on a notion of structural equivalence where differences in concrete syntax representation
+matter if and only if they result in structural differences. Unfortunately, the standard concrete syntaxes for [OWL2] such as [OWL2 RDF/XML] and [OWL2 XML] 
+allow considerable variability in the concrete syntax representation of a given [OWL2 Ontology]. In practice, this means that it is difficult for users
+to use version control systems like `git` to manage changes to ontologies. Indeed, concrete syntax serialization differences like shuffling the order
+in which axioms are represented have no structural significance because an [OWL2 Ontology] is a set of axioms -- the order is structurally irrelevant;
+however, any concrete syntax representation has to choose a particular order. 
 
-This normalized schema is designed to ensure that structurally equivalent OML Context(s) 
-have identical representations in terms of instance data of the normalized schema.
+OML avoids this problem thanks to an OML normalized tabular schema that is designed to ensure that an OML Context ontology has a unique concrete
+syntax representation as sorted rows for the OML normalized tabular schema. This ensures that any difference in the concrete syntax representation
+(i.e., adding, deleting, changing a particular row) reflects a structurally significant difference with respect to the OML specification. 
+Despite this difference, the [concrete schema definitions of OML](GLOSSARY.md#oml-schema-concrete-glossary))
+plays a similar role for OML than the simplified UML class diagrams do for the [OWL2 Structural Specification].
 Since an OML Context maps to an [OWL2 Ontology] and that a given [OWL2 Ontology] can be serialized
 in multiple documents that are structurally equivalent to each other, it follows
 that a given OML Context is structurally equivalent to all the serializations of ontology documents
 that are structurally equivalent to its corresponding [OWL2 Ontology].
-This propety is particularly important for change management because the OML normalized schema table
-serialization ensures that any change in serialization is structurally significant by definition.
-In contrast, change management with the serialization of OML Context(s) based on their mapping to [OWL2 Ontologies] 
-would involve comparing serializations of ontology documents; such as [OWL2 RDF/XML], which is notorious for
-allowing syntactically different serializations for structurally equivalent ontologies. 
-This suggests that it is practically preferable to use the OML normalized schema table serialization
-under change management because any change in serialization is structurally significant and use OML converters
-to produce [OWL2 Ontology] documents as needed for [OWL2-DL] reasoning. 
+This propety enables a change management strategy that leverages both OML and OWL2 for their respective strengths:
+
+- OML normalized tabular schema representations of OML Context ontologies are kept under version control (e.g. `git`)
+   
+  This ensures that any difference reported by `git diff` is structurally significant in OML.
+  
+- Using the appropriate OML tools, OML Context ontologies are converted to their corresponding [OWL2 Ontology] representations with [SWRL] rules.
+
+  This enables using standards-based tools for querying and reasoning (e.g., [Pellet]). 
+  
+  However, the results of such reasoning (e.g., entailments, unsatisfiability, inconsistency) need to be mapped back to their corresponding OML representation
+  to help users remain productively focused on using OML instead of forcing them to become cognizant in the details of the mapping. 

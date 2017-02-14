@@ -7,6 +7,7 @@
 ## Topics
 
 * [Ontological Modeling](OntologicalModeling.md) 
+* [Entity Relationships: Reified and Unreified](EntityRelationships-Reified-and-Unreified.md)
 * [The category of OML Terms](Terms.md)
 * [OML and OWL2](oml-and-owl2.md)
 
