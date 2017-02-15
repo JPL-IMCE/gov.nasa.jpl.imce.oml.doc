@@ -95,22 +95,6 @@ and with 2 specializations:
  - OML ConceptInstance
  - OML ReifiedRelationshipInstance
 
-## OML Context
-
-An OML Context maps to an [OWL2-DL Ontology];
-it is a kind of OML Resource that is a logical container of OML TerminologyThing(s)
-and a non-logical container of OML Annotation(s).
-
-{APIs: **Normalized**, **Functional**}
-
-Abstract definition with 2 generalizations:
- - OML Resource
- - OML TerminologyThing
-
-and with 2 specializations:
- - OML DescriptionBox
- - OML TerminologyBox
-
 ## OML DataRange
 
 An OWL DataRange corresponds to an [OWL2 DataRange] with arity=1.
@@ -239,7 +223,7 @@ and with 2 specializations:
 ## OML DescriptionBoxRelationship
 
 An OML DescriptionBoxRelationship is a directed binary relationship
-from an OML DescriptionBox source to an OML Context target.
+from an OML DescriptionBox source to an OML Module target.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -339,6 +323,22 @@ and with 3 specializations:
  - OML EntityScalarDataPropertyParticularRestrictionAxiom
  - OML EntityScalarDataPropertyUniversalRestrictionAxiom
 
+## OML Module
+
+An OML Module maps to an [OWL2-DL Ontology];
+it is a kind of OML Resource that is a logical container of OML TerminologyThing(s)
+and a non-logical container of OML Annotation(s).
+
+{APIs: **Normalized**, **Functional**}
+
+Abstract definition with 2 generalizations:
+ - OML Resource
+ - OML TerminologyThing
+
+and with 2 specializations:
+ - OML DescriptionBox
+ - OML TerminologyBox
+
 ## OML Resource
 
 An OML Resource is an abstraction for
@@ -351,7 +351,7 @@ between its name and its IRI depend on what kind of OML Resource it is.
 {APIs: **Normalized**, **Functional**}
 
 Abstract with 3 specializations:
- - OML Context
+ - OML Module
  - OML Term
  - OML TerminologyInstanceAssertion
 
@@ -454,7 +454,7 @@ and with 2 specializations:
 
 ## OML TerminologyBox
 
-An OML TerminologyBox is an OML Context for defining a domain-specific vocabulary
+An OML TerminologyBox is an OML Module for defining a domain-specific vocabulary
 as a logical set of OML TerminologyBoxStatement(s),
 possibly by reuse of other vocabularies via OML TerminologyBoxAxiom(s).
 The semantics of an OML TerminologyBox domain-specific vocabulary is defined
@@ -465,7 +465,7 @@ according to its OML TerminologyGraphKind.
 {APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
- - OML Context
+ - OML Module
 
 and with 2 specializations:
  - OML Bundle
@@ -488,7 +488,7 @@ and with 3 specializations:
 ## OML TerminologyBoxStatement
 
 An OML TerminologyBoxStatement is a logical axiom about an OML TerminologyThing
-asserted in the context of an OML TerminologyBox.
+in an OML TerminologyBox.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -501,7 +501,7 @@ and with 2 specializations:
 
 ## OML TerminologyBundleAxiom
 
-An OML TerminologyBundleAxiom is a TerminologyAxiom that asserts a logical statement in the context of a Bundle.
+An OML TerminologyBundleAxiom is a TerminologyAxiom that asserts a logical statement in an OML Bundle.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -514,7 +514,7 @@ and with 1 specialization:
 ## OML TerminologyBundleStatement
 
 An OML TerminologyBundleStatement is a logical axiom about an OML TerminologyThing
-asserted in the context of an OML Bundle.
+in an OML Bundle.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -551,8 +551,8 @@ in a vocabulary that is globally identified by a UUID.
 {APIs: **Normalized**, **Functional**}
 
 Abstract with 6 specializations:
- - OML Context
  - OML DescriptionBoxRelationship
+ - OML Module
  - OML TerminologyAxiom
  - OML TerminologyBoxStatement
  - OML TerminologyBundleStatement
@@ -579,23 +579,23 @@ Abstract with 4 specializations:
 
 For the OML tabular interchange representation,
 an OML AnnotationEntry (for a given OML AnnotationProperty) is a triple:
-- an OML Context in which the OML AnnotationEntry appears
+- an OML Module in which the OML AnnotationEntry appears
 - an annotated OML TerminologyThing subject
 - a String value as the representation of some information
-  about the subject in that context.
+  about the subject in that module.
 
 {APIs: **Normalized**, **Functional**}
 
 Normalized Relational Schema Table:
-- contextUUID: UUID (Foreign Key for: OML Context)
 - subjectUUID: UUID (Foreign Key for: OML TerminologyThing)
 - value: String
+- moduleUUID: UUID (Foreign Key for: OML Module)
 
 ## OML AnnotationProperty
 
 An OML AnnotationProperty maps to an [OWL2 AnnotationProperty]
 and is similarly a non-logical property for associating some information
-to any OML TerminologyThing in an OML Context.
+to any OML TerminologyThing in an OML Module.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -671,9 +671,10 @@ Normalized Relational Schema Table:
 ## OML TerminologyNestingAxiom
 
 An OML TerminologyNestingAxiom provides support for relating
-a white-box OML TerminologyGraph as a nested terminology
-providing details about a black-box OML Concept defined
-in a nesting OML TerminologyBox.
+a white-box nested OML TerminologyGraph used for describing internal
+details about a nesting OML Concept defined in a nesting OML TerminologyBox.
+This nesting OML Concept specifies the context for the internal details
+defined in the nested OML TerminologyGraph.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -1310,7 +1311,7 @@ Normalized Relational Schema Table:
 
 ## OML RootConceptTaxonomyAxiom
 
-An OML RootConceptTaxonomyAxiom asserts that, in the context of a Bundle, a particular Entity
+An OML RootConceptTaxonomyAxiom asserts that, in the scope of a Bundle, a particular Entity
 is the root of a taxonomy of specializations of that Entity.
 
 {APIs: **Normalized**, **Functional**}
@@ -1377,7 +1378,7 @@ about [OWL2-DL NamedIndividuals] mapped from OML TerminologyInstanceAssertion(s)
 {APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
- - OML Context
+ - OML Module
 
 Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
@@ -1532,7 +1533,7 @@ Normalized Relational Schema Table:
 ## OML Annotation
 
 An OML Annotation maps to an [OWL2 Annotation] and is similarly
-a non-logical statement in an OML Context
+a non-logical statement in an OML Module
 associating some information as the value of an
 OML AnnotationProperty for describing a subject (an OML TerminologyThing).
 
@@ -1549,7 +1550,7 @@ with a set of OML AnnotationEntry values.
 ## OML TerminologyExtent
 
 An OML TerminologyExtent defines an in-memory tuple
-about each OML Context involved in modeling and reasoning about domain-specific
+about each OML Module involved in modeling and reasoning about domain-specific
 vocabularies and systems descriptions using such vocabularies:
 - An OML TerminologyGraph for defining a vocabulary about a domain or a description of a system in a domain;
 - An OML Bundle for aggregating OML TerminologyBox(es) for as modular [OWL2-DL Ontologies] for monotonic refinement and reasoning;

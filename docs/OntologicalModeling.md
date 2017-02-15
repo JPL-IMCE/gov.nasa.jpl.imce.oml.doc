@@ -3,20 +3,20 @@
 # Ontological Modeling
 
 OML is designed to frame a rigorous approach for Model-Based Systems Engineering (MBSE).
-From an MBSE perspective, a `model` in OML is an OML Context whose semantics is defined by
+From an MBSE perspective, a `model` in OML is an OML Module whose semantics is defined by
 its mapping to an [OWL2-DL Ontology] with [SWRL] rules. This applies to different kinds
 of `models` used in MBSE including but not limited to a metamodel like [OMG UML 2.5], 
 a profile like [OMG SysML 1.4], a model library like SysML's QUDV and SysML's ISO-80000 library 
 as well as user-defined models. From a pragmatic perspective, the semantics of 
-an OML Context mapped from a UML/SysML `model` includes a formalization of SysML's `PropertySpecificType`;
+an OML Module mapped from a UML/SysML `model` includes a formalization of SysML's `PropertySpecificType`;
 a mechanism for describing a context-specific role that a SysML Block plays in the context of a system. 
 
 The OML specification makes structural and semantic distinctions among three kinds of models,
-each kind is an OML Context that maps to a particular usage of [OWL2-DL Ontology] with [SWRL] rules.
+each kind is an OML Module that maps to a particular usage of [OWL2-DL Ontology] with [SWRL] rules.
 
 ## Identification
 
-OML uses the same identification principle than OWL2 for identifying OML Context(s) (i.e. [OWL2-DL Ontologies])
+OML uses the same identification principle than OWL2 for identifying OML Module(s) (i.e. [OWL2-DL Ontologies])
 and their elements. For additional precision, OML includes support for specifying that an OML EntityDataProperty
 has the semantics of an `IdentityCriteria` in the sense of [OntoClean] conveyed by the mapping to an [OWL2 Key Axiom].
 
@@ -31,12 +31,12 @@ An OML AnnotationProperty is identified by a combination of an abbreviated IRI a
 
 ## Ontologies
 
-The notions of OML Context, OML Annotation, OML AnnotationProperty are described in the following figure:
+The notions of OML Module, OML Annotation, OML AnnotationProperty are described in the following figure:
 
-![OML Contexts](images/OML Contexts.svg)
+![OML Modules](images/OML Modules.svg)
 
-An OML Context maps to an [OWL2-DL Ontology] with a set of [OWL2 Axioms] and [SWRL] rules.
-On first order, OML distinguishes between two kinds of OML Context(s):
+An OML Module maps to an [OWL2-DL Ontology] with a set of [OWL2 Axioms] and [SWRL] rules.
+On first order, OML distinguishes between two kinds of OML Module(s):
 
 - An OML TerminologyBox corresponds to a so-called [Tbox Ontology].
 
@@ -84,7 +84,7 @@ OML is generally biased towards partitionning the use of the vocabulary of [OWL2
   
 For example:
   
-  - Disjointness is used only for representing the semantic commitment to the [Unique Name Assumption] in the context of an OML Bundle only.
+  - Disjointness is used only for representing the semantic commitment to the [Unique Name Assumption] in the scope of an OML Bundle only.
   
   - Cardinality restrictions are used only for representing the semantic commitment to singletons in `ClosedWorldDesignations` OML TerminologyBox(es).
    
@@ -176,9 +176,9 @@ This restricted use of the [OWL2-DL] vocabulary is reflected in the distinction 
   
 ### Canonical Parsing
 
-OML provides a strong guarantee that any structurally significant difference between OML Context(s) ontoloties is precisely reflected
+OML provides a strong guarantee that any structurally significant difference between OML Module(s) ontoloties is precisely reflected
 in the syntactical differences of their representation in the OML normalized relational schema table serialization without superfluous change noise.
-In practice, this strong guarantee is important to enable multiple teams to collaborate on developing OML Context ontologies
+In practice, this strong guarantee is important to enable multiple teams to collaborate on developing OML Module ontologies
 for authoring and evolving multiple inter-related domain-specific vocabularies; for bundling them to reflect commitments to domain-specific distinctions
 among OML Concept(s); for using such bundles for describing the topology and structure of systems and for describing particular 
 configurations in particular state of affairs of such topologies & structures with named individuals identified according to all relevant identity criteria.
@@ -193,22 +193,22 @@ to use version control systems like `git` to manage changes to ontologies. Indee
 in which axioms are represented have no structural significance because an [OWL2 Ontology] is a set of axioms -- the order is structurally irrelevant;
 however, any concrete syntax representation has to choose a particular order. 
 
-OML avoids this problem thanks to an OML normalized tabular schema that is designed to ensure that an OML Context ontology has a unique concrete
+OML avoids this problem thanks to an OML normalized tabular schema that is designed to ensure that an OML Module ontology has a unique concrete
 syntax representation as sorted rows for the OML normalized tabular schema. This ensures that any difference in the concrete syntax representation
 (i.e., adding, deleting, changing a particular row) reflects a structurally significant difference with respect to the OML specification. 
 Despite this difference, the [concrete schema definitions of OML](GLOSSARY.md#oml-schema-concrete-glossary))
 plays a similar role for OML than the simplified UML class diagrams do for the [OWL2 Structural Specification].
-Since an OML Context maps to an [OWL2 Ontology] and that a given [OWL2 Ontology] can be serialized
+Since an OML Module maps to an [OWL2 Ontology] and that a given [OWL2 Ontology] can be serialized
 in multiple documents that are structurally equivalent to each other, it follows
-that a given OML Context is structurally equivalent to all the serializations of ontology documents
+that a given OML Module is structurally equivalent to all the serializations of ontology documents
 that are structurally equivalent to its corresponding [OWL2 Ontology].
 This propety enables a change management strategy that leverages both OML and OWL2 for their respective strengths:
 
-- OML normalized tabular schema representations of OML Context ontologies are kept under version control (e.g. `git`)
+- OML normalized tabular schema representations of OML Module ontologies are kept under version control (e.g. `git`)
    
   This ensures that any difference reported by `git diff` is structurally significant in OML.
   
-- Using the appropriate OML tools, OML Context ontologies are converted to their corresponding [OWL2 Ontology] representations with [SWRL] rules.
+- Using the appropriate OML tools, OML Module ontologies are converted to their corresponding [OWL2 Ontology] representations with [SWRL] rules.
 
   This enables using standards-based tools for querying and reasoning (e.g., [Pellet]). 
   

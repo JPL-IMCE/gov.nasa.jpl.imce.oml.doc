@@ -5,10 +5,10 @@
 ## Abstract
 
 The Ontological Modeling Language, OML, is a thin vocabulary extension of [W3C]'s [OWL 2 Web Ontology Language] 
-designed to support precise and modular reasoning about descriptive systems engineering models. An OML Context
+designed to support precise and modular reasoning about descriptive systems engineering models. An OML Module
 maps to an [OWL2-DL Ontology] with [SWRL] rules both structurally and semantically. Structurally, an [OWL2-DL Ontology] provides 
 classes, properties, individuals and data values that are represented in Semantic Web documents. These constructs
-form the basis of the [OWL2-DL]+[SWRL] mapping of an OML Context whose corresponding constructs include
+form the basis of the [OWL2-DL]+[SWRL] mapping of an OML Module whose corresponding constructs include
 OML Entity, OML EntityRelationship, OML Datatype,  OML DataProperty and OML TerminologyInstanceAssertion.
 
 ## Vocabularies for Model-Based Systems Engineering (MBSE)
@@ -33,15 +33,15 @@ OML Terms and OML Axioms map to patterns involving [OWL2 Entities] and [OWL2 Axi
 
 ## Key properties of the semantics of OML in [OWL2-DL]+[SWRL].
 
-The semantics of an OML Context is defined by its mapping to a corresponding [OWL2-DL Ontology] with [SWRL] rules.
+The semantics of an OML Module is defined by its mapping to a corresponding [OWL2-DL Ontology] with [SWRL] rules.
 OML is designed to provide support for modular and collaborative practices of domain-specific Model-Based Systems Engineering
 with an emphasis on precision and rigor thanks to the following key features of OML:
 
 - Mapping to [OWL2-DL Ontologies] {semantic-mapping}
 
-  For collaborative modeling, every OML Context model that maps to a well-formed [OWL2-DL Ontology] with [SWRL] rules has a unique 
+  For collaborative modeling, every OML Module model that maps to a well-formed [OWL2-DL Ontology] with [SWRL] rules has a unique 
   in the OML tabular interchange representation. Differences in the OML tabular interchange representation (e.g., with `git diff`)
-  are isomorphic to differences in the structure of corresponding OML Contexts.
+  are isomorphic to differences in the structure of corresponding OML Modules.
   
 - Rigorous authoring of domain-specific vocabularies {rigorous-authoring}
 
