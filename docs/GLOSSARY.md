@@ -587,9 +587,9 @@ an OML AnnotationEntry (for a given OML AnnotationProperty) is a triple:
 {APIs: **Normalized**, **Functional**}
 
 Normalized Relational Schema Table:
+- moduleUUID: UUID (Foreign Key for: OML Module)
 - subjectUUID: UUID (Foreign Key for: OML TerminologyThing)
 - value: String
-- moduleUUID: UUID (Foreign Key for: OML Module)
 
 ## OML AnnotationProperty
 
