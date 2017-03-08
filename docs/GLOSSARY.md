@@ -1,14 +1,14 @@
 {% include "./external-links.md" %}
 # OML Glossary Summary
 
-The vocabulary of the Ontological Modeling Language, OML, consists of 90 definitions
-(36 abstract and 54 concrete).
+The vocabulary of the Ontological Modeling Language, OML, consists of 89 definitions
+(35 abstract and 54 concrete).
 This OML vocabulary is the basis of the Ontological Modeling Framework (OMF), which is 
 a collection of multiple technology-based Application Programming Interfaces (APIs) & libraries.
 
 - **EMF/CDO** OMF APIs and libraries based on the [Eclipse Modeling Framework] and [Connected Data Objects]
 
-  All 90 definitions induce corresponding EMF-based APIs and libraries.
+  All 89 definitions induce corresponding EMF-based APIs and libraries.
   For the 54 concrete definitions, the *EMF/CDO* APIs
   include all the 49 *Normalized* APIs, all the 3 *Functional* APIs,
   and 2 definitions uniquely intended for *EMF/CDO*.
@@ -28,20 +28,7 @@ a collection of multiple technology-based Application Programming Interfaces (AP
   augment the normalized OMF APIs for the in-memory processing of OMF information
   extracted from parsing the OML tabular interchange representation.
 
-# OML Glossary of 36 Abstract Definitions {#oml-abstract-glossary}
-
-## OML Axiom
-
-An OML Axiom maps to a pattern of [OWL2 Axioms].
-
-{APIs: **Normalized**, **Functional**}
-
-Abstract definition with 1 generalization:
- - OML TerminologyBoxStatement
-
-and with 2 specializations:
- - OML ScalarOneOfLiteralAxiom
- - OML TermAxiom
+# OML Glossary of 35 Abstract Definitions {#oml-abstract-glossary}
 
 ## OML ConceptTreeDisjunction
 
@@ -57,13 +44,9 @@ Abstract with 2 specializations:
 
 ## OML ConceptualEntity
 
-An OML ConceptualEntity is an OML Entity
-that can be either abstract or concrete.
-An abstract OML ConceptualEntity cannot have any instance
-in a final OML DescriptionBox.
-A concrete OML ConceptualEntity can be partially instantiated
+An OML ConceptualEntity is an OML Entity that can be instantiated
 as an OML ConceptualEntitySingletonInstance in any OML DescriptionBox.
-If is partially instantiated if some essential OML EntityRelationship
+It is partially instantiated if some essential OML EntityRelationship
 or OML DataRelationshipFromEntity with `isIdentityCriteria=true` lacks
 an OML TerminologyInstanceAssertion specifying its reference or value respectively.
 
@@ -228,7 +211,7 @@ from an OML DescriptionBox source to an OML Module target.
 {APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
- - OML TerminologyThing
+ - OML ModuleElement
 
 and with 2 specializations:
  - OML DescriptionBoxExtendsClosedWorldDefinitions
@@ -326,18 +309,25 @@ and with 3 specializations:
 ## OML Module
 
 An OML Module maps to an [OWL2-DL Ontology];
-it is a kind of OML Resource that is a logical container of OML TerminologyThing(s)
+it is a kind of OML Resource that is a logical container of OML ModuleElement(s)
 and a non-logical container of OML Annotation(s).
 
 {APIs: **Normalized**, **Functional**}
 
 Abstract definition with 2 generalizations:
+ - OML Element
  - OML Resource
- - OML TerminologyThing
 
-and with 2 specializations:
- - OML DescriptionBox
- - OML TerminologyBox
+
+## OML ModuleElement
+
+An OML ModuleElement is an OML Element defined in an OML Module
+
+{APIs: **Normalized**, **Functional**}
+
+Abstract definition with 1 generalization:
+ - OML Element
+
 
 ## OML Resource
 
@@ -350,10 +340,8 @@ between its name and its IRI depend on what kind of OML Resource it is.
 
 {APIs: **Normalized**, **Functional**}
 
-Abstract with 3 specializations:
+Abstract with 1 specialization:
  - OML Module
- - OML Term
- - OML TerminologyInstanceAssertion
 
 ## OML RestrictedDataRange
 
@@ -432,58 +420,54 @@ An OML TermAxiom is a logical axiom about an OML Term.
 {APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
- - OML Axiom
+ - OML TerminologyBoxStatement
 
-and with 3 specializations:
+and with 4 specializations:
  - OML EntityRestrictionAxiom
  - OML EntityScalarDataPropertyRestrictionAxiom
+ - OML ScalarOneOfLiteralAxiom
  - OML SpecializationAxiom
 
 ## OML TerminologyAxiom
 
-An OML TerminologyAxiom is asserted in a TerminologyBox of some kind.
+An OML TerminologyAxiom is asserted in an OML TerminologyBox of some kind.
 
 {APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
- - OML TerminologyThing
+ - OML ModuleElement
 
-and with 2 specializations:
+and with 1 specialization:
  - OML TerminologyBoxAxiom
- - OML TerminologyBundleAxiom
 
 ## OML TerminologyBox
 
 An OML TerminologyBox is an OML Module for defining a domain-specific vocabulary
-as a logical set of OML TerminologyBoxStatement(s),
-possibly by reuse of other vocabularies via OML TerminologyBoxAxiom(s).
+as a logical set of OML TerminologyBoxStatement(s), possibly by reuse of other
+vocabularies via OML TerminologyBoxAxiom(s).
 The semantics of an OML TerminologyBox domain-specific vocabulary is defined
 by the mapping to [OWL2-DL] of the other vocabularies it reuses, if any, and
 that of its OML TerminologyBoxAxiom(s) and OML TerminologyBoxStatement(s)
-according to its OML TerminologyGraphKind.
+according to its OML TerminologyKind.
 
 {APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML Module
 
-and with 2 specializations:
- - OML Bundle
- - OML TerminologyGraph
 
 ## OML TerminologyBoxAxiom
 
-An OML TerminologyBoxAxiom is a TerminologyAxiom that asserts a logical statement about a Term.
+An OML TerminologyBoxAxiom is an OML TerminologyAxiom that
+asserts a logical statement about an OML TerminologyBox.
 
 {APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
  - OML TerminologyAxiom
 
-and with 3 specializations:
- - OML ConceptDesignationTerminologyAxiom
+and with 1 specialization:
  - OML TerminologyExtensionAxiom
- - OML TerminologyNestingAxiom
 
 ## OML TerminologyBoxStatement
 
@@ -493,11 +477,11 @@ in an OML TerminologyBox.
 {APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
- - OML TerminologyThing
+ - OML ModuleElement
 
 and with 2 specializations:
- - OML Axiom
  - OML Term
+ - OML TermAxiom
 
 ## OML TerminologyBundleAxiom
 
@@ -519,7 +503,7 @@ in an OML Bundle.
 {APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
- - OML TerminologyThing
+ - OML ModuleElement
 
 and with 2 specializations:
  - OML DisjointUnionOfConceptsAxiom
@@ -532,8 +516,8 @@ An OML TerminologyInstanceAssertion is a logical OML TerminologyThing defined in
 {APIs: **Normalized**, **Functional**}
 
 Abstract definition with 2 generalizations:
+ - OML ModuleElement
  - OML Resource
- - OML TerminologyThing
 
 and with 6 specializations:
  - OML ReifiedRelationshipInstanceDomain
@@ -542,21 +526,6 @@ and with 6 specializations:
  - OML SingletonInstance
  - OML StructuredDataPropertyValue
  - OML UnreifiedRelationshipInstanceTuple
-
-## OML TerminologyThing
-
-An OML TerminologyThing is a logical abstraction for everything
-in a vocabulary that is globally identified by a UUID.
-
-{APIs: **Normalized**, **Functional**}
-
-Abstract with 6 specializations:
- - OML DescriptionBoxRelationship
- - OML Module
- - OML TerminologyAxiom
- - OML TerminologyBoxStatement
- - OML TerminologyBundleStatement
- - OML TerminologyInstanceAssertion
 
 ## OML UnaryTermKind
 
@@ -588,7 +557,7 @@ an OML AnnotationEntry (for a given OML AnnotationProperty) is a triple:
 
 Normalized Relational Schema Table:
 - moduleUUID: UUID (Foreign Key for: OML Module)
-- subjectUUID: UUID (Foreign Key for: OML TerminologyThing)
+- subjectUUID: UUID (Foreign Key for: OML Element)
 - value: String
 
 ## OML AnnotationProperty
@@ -615,7 +584,7 @@ Concrete definition with 1 generalization:
 
 Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
-- kind: TerminologyGraphKind
+- kind: TerminologyKind
 - iri: IRI
 
 ## OML Bundle
@@ -631,7 +600,7 @@ Concrete definition with 1 generalization:
 
 Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
-- kind: TerminologyGraphKind
+- kind: TerminologyKind
 - iri: IRI
 
 ## OML ConceptDesignationTerminologyAxiom
@@ -718,7 +687,6 @@ Concrete definition with 3 generalizations:
 Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
 - tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
-- isAbstract: Boolean
 - name: LocalName
 
 ## OML ReifiedRelationship
@@ -741,7 +709,6 @@ Normalized Relational Schema Table:
 - tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
 - sourceUUID: UUID (Foreign Key for: OML Entity)
 - targetUUID: UUID (Foreign Key for: OML Entity)
-- isAbstract: Boolean
 - isAsymmetric: Boolean
 - isEssential: Boolean
 - isFunctional: Boolean
@@ -1269,7 +1236,7 @@ An OML ScalarOneOfLiteralAxiom specifies a literal in a ScalarOneOfRestriction d
 {APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
- - OML Axiom
+ - OML TermAxiom
 
 Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
@@ -1291,8 +1258,8 @@ Concrete definition with 1 generalization:
 
 Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
-- terminologyBundleUUID: UUID (Foreign Key for: OML Bundle)
 - bundledTerminologyUUID: UUID (Foreign Key for: OML TerminologyBox)
+- bundleUUID: UUID (Foreign Key for: OML Bundle)
 
 ## OML AnonymousConceptTaxonomyAxiom
 
@@ -1547,14 +1514,10 @@ with a set of OML AnnotationEntry values.
 
 {APIs: **Functional**}
 
-## OML TerminologyExtent
+## OML Extent
 
-An OML TerminologyExtent defines an in-memory tuple
-about each OML Module involved in modeling and reasoning about domain-specific
-vocabularies and systems descriptions using such vocabularies:
-- An OML TerminologyGraph for defining a vocabulary about a domain or a description of a system in a domain;
-- An OML Bundle for aggregating OML TerminologyBox(es) for as modular [OWL2-DL Ontologies] for monotonic refinement and reasoning;
-- An OML DescriptionBox for describing actual systems according to one or more domain-specific OML TerminologyBox vocabularies.
+An OML Extent is an in-memory store of all OML Element(s)
+loaded from external OML documents.
 
 {APIs: **Functional**}
 
