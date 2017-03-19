@@ -1,7 +1,7 @@
 [Abox Ontology]: https://en.wikipedia.org/wiki/Abox "ABox Ontology"
 [Alloy]: http://alloy.mit.edu/alloy/ "Alloy"
 [Canonical Parsing of OWL2 Ontologies]: https://www.w3.org/TR/owl2-syntax/#Canonical_Parsing_of_OWL_2_Ontologies "Canonical Parsing of OWL2 Ontologies"
-[Formula]: https://github.com/Microsoft/formula [Formula]
+[Formula]: https://github.com/Microsoft/formula "Formula"
 [Global Restrictions on Axioms in OWL2 DL]: https://www.w3.org/TR/owl2-syntax/#Global_Restrictions_on_Axioms_in_OWL_2_DL "Global Restrictions on Axioms in OWL2 DL"
 [IRI]: https://www.w3.org/TR/owl2-syntax/#IRIs "OWL2 IRI"
 [IRIs]: https://www.w3.org/TR/owl2-syntax/#IRIs "OWL2 IRIs"

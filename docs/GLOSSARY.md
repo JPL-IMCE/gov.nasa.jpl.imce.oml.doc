@@ -28,20 +28,124 @@ a collection of multiple technology-based Application Programming Interfaces (AP
   augment the normalized OMF APIs for the in-memory processing of OMF information
   extracted from parsing the OML tabular interchange representation.
 
-# OML Glossary of 35 Abstract Definitions {#oml-abstract-glossary}
 
-## OML ConceptTreeDisjunction
+# 1 OML Common Glossary {#oml-common-glossary}
+# 1.1 OML Common Glossary of 3 Abstract Definitions {#oml-common-abstract-glossary}
+## OML Module
 
-An OML ConceptTreeDisjunction represents the root & non-leaf nodes of a concept taxonomy:
-- Root node is a RootConceptTaxonomyAxiom.
-- Non-leaf nodes are AnonymousConceptTaxonomyAxioms.
+An OML Module maps to an [OWL2-DL Ontology];
+it is a kind of OML Resource that is a logical container of OML ModuleElement(s)
+and a non-logical container of OML Annotation(s).
 
 {APIs: **Normalized**, **Functional**}
 
-Abstract with 2 specializations:
- - OML AnonymousConceptTaxonomyAxiom
- - OML RootConceptTaxonomyAxiom
+Abstract definition with 2 generalizations:
+ - OML Element
+ - OML Resource
 
+
+## OML ModuleElement
+
+An OML ModuleElement is an OML Element defined in an OML Module
+
+{APIs: **Normalized**, **Functional**}
+
+Abstract definition with 1 generalization:
+ - OML Element
+
+
+## OML Resource
+
+An OML Resource is an abstraction for
+everything in a vocabulary that is identifiable
+locally by name within the vocabulary and
+globally by an IRI across multiple vocabularies.
+For a particular OML Resource, the constraints
+between its name and its IRI depend on what kind of OML Resource it is.
+
+{APIs: **Normalized**, **Functional**}
+
+Abstract with 1 specialization:
+ - OML Module
+
+# 1.2 OML Common Glossary of 7 Concrete Definitions {#oml-common-concrete-glossary}
+
+# 1.2.1 OML Common Glossary of 2 Schema Concrete Definitions {#oml-common-schema-concrete-glossary}
+
+## OML AnnotationEntry
+
+For the OML tabular interchange representation,
+an OML AnnotationEntry (for a given OML AnnotationProperty) is a triple:
+- an OML Module in which the OML AnnotationEntry appears
+- an annotated OML TerminologyThing subject
+- a String value as the representation of some information
+  about the subject in that module.
+
+{APIs: **Normalized**, **Functional**}
+
+Normalized Relational Schema Table:
+- moduleUUID: UUID (Foreign Key for: OML Module)
+- subjectUUID: UUID (Foreign Key for: OML Element)
+- value: String
+
+## OML AnnotationProperty
+
+An OML AnnotationProperty maps to an [OWL2 AnnotationProperty]
+and is similarly a non-logical property for associating some information
+to any OML TerminologyThing in an OML Module.
+
+{APIs: **Normalized**, **Functional**}
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- iri: IRI
+- abbrevIRI: AbbrevIRI
+
+# 1.2.2 OML Common Glossary of 3 Functional API Concrete Definitions {#oml-common-functional-concrete-glossary}
+
+## OML Annotation
+
+An OML Annotation maps to an [OWL2 Annotation] and is similarly
+a non-logical statement in an OML Module
+associating some information as the value of an
+OML AnnotationProperty for describing a subject (an OML TerminologyThing).
+
+{APIs: **Functional**}
+
+## OML AnnotationPropertyTable
+
+For the OML tabular interchange representation,
+an OML AnnotationPropertyTable pairs an OML AnnotationProperty key
+with a set of OML AnnotationEntry values.
+
+{APIs: **Functional**}
+
+## OML Extent
+
+An OML Extent is an in-memory store of all OML Element(s)
+loaded from external OML documents.
+
+{APIs: **Functional**}
+
+# 1.2.3 OML Common Glossary of 2 EMF/CDO API Concrete Definitions {#oml-common-emf-cdo-concrete-glossary}
+
+## OML AnnotationSubjectPropertyValue
+
+An OML AnnotationSubjectPropertyValue is an in-memory construct
+pairing an OML AnnotationProperty with a String value.
+
+{APIs: **EMF/CDO**}
+
+## OML AnnotationSubjectTable
+
+An OML AnnotationSubjectTable is an in-memory construct
+pairing an OML TerminologyThing subject key with a set
+of OML AnnotationSubjectPropertyValue tuples.
+
+{APIs: **EMF/CDO**}
+
+# 2 OML Terminologies Glossary {#oml-terminologies-glossary}
+# 2.1 OML Terminologies Glossary of 24 Abstract Definitions {#oml-terminologies-abstract-glossary}
 ## OML ConceptualEntity
 
 An OML ConceptualEntity is an OML Entity that can be instantiated
@@ -55,28 +159,6 @@ an OML TerminologyInstanceAssertion specifying its reference or value respective
 Abstract with 2 specializations:
  - OML Concept
  - OML ReifiedRelationship
-
-## OML ConceptualEntitySingletonInstance
-
-An OML ConceptualEntitySingletonInstance defines an instance of an OML ConceptualEntity.
-An OML ConceptualEntitySingletonInstance maps to an [OWL2 NamedIndividual].
-The semantics depends on the kind of OML ConceptualEntity classifier:
-- If the OML ConceptualEntity is the domain for at least at least
-  one OML DataRelationshipFromEntity with `isIdentityCriteria=true`,
-  then the [OWL2-DL] mapping includes an [OWL2 Key Axiom]
-  forcing that all distinctly named OML ConceptualEntitySingletonInstance
-  must have different values for each OML DataRelationshipFromEntity with `isIdentityCriteria=true`.
-- otherwise, distinctly named OML ConceptualEntitySingletonInstance
-  represent semantically different instances.
-
-{APIs: **Normalized**, **Functional**}
-
-Abstract definition with 1 generalization:
- - OML SingletonInstance
-
-and with 2 specializations:
- - OML ConceptInstance
- - OML ReifiedRelationshipInstance
 
 ## OML DataRange
 
@@ -203,20 +285,6 @@ and with 2 specializations:
  - OML DataRange
  - OML Structure
 
-## OML DescriptionBoxRelationship
-
-An OML DescriptionBoxRelationship is a directed binary relationship
-from an OML DescriptionBox source to an OML Module target.
-
-{APIs: **Normalized**, **Functional**}
-
-Abstract definition with 1 generalization:
- - OML ModuleElement
-
-and with 2 specializations:
- - OML DescriptionBoxExtendsClosedWorldDefinitions
- - OML DescriptionBoxRefinement
-
 ## OML DirectedBinaryRelationshipKind
 
 An OML DirectedBinaryRelationshipKind is an abstraction
@@ -228,21 +296,6 @@ that are relationships with arity 2
 Abstract with 2 specializations:
  - OML DataRelationship
  - OML EntityRelationship
-
-## OML DisjointUnionOfConceptsAxiom
-
-An OML DisjointUnionOfConceptsAxiom(s) represents non-leaf & leaf nodes of a concept taxonomy:
-- Each non-leaf node is an OML AnonymousConceptTaxonomyAxiom.
-- Each leaf nodes is an OML SpecificDisjointConceptAxiom.
-
-{APIs: **Normalized**, **Functional**}
-
-Abstract definition with 1 generalization:
- - OML TerminologyBundleStatement
-
-and with 2 specializations:
- - OML AnonymousConceptTaxonomyAxiom
- - OML SpecificDisjointConceptAxiom
 
 ## OML Entity
 
@@ -306,43 +359,6 @@ and with 3 specializations:
  - OML EntityScalarDataPropertyParticularRestrictionAxiom
  - OML EntityScalarDataPropertyUniversalRestrictionAxiom
 
-## OML Module
-
-An OML Module maps to an [OWL2-DL Ontology];
-it is a kind of OML Resource that is a logical container of OML ModuleElement(s)
-and a non-logical container of OML Annotation(s).
-
-{APIs: **Normalized**, **Functional**}
-
-Abstract definition with 2 generalizations:
- - OML Element
- - OML Resource
-
-
-## OML ModuleElement
-
-An OML ModuleElement is an OML Element defined in an OML Module
-
-{APIs: **Normalized**, **Functional**}
-
-Abstract definition with 1 generalization:
- - OML Element
-
-
-## OML Resource
-
-An OML Resource is an abstraction for
-everything in a vocabulary that is identifiable
-locally by name within the vocabulary and
-globally by an IRI across multiple vocabularies.
-For a particular OML Resource, the constraints
-between its name and its IRI depend on what kind of OML Resource it is.
-
-{APIs: **Normalized**, **Functional**}
-
-Abstract with 1 specialization:
- - OML Module
-
 ## OML RestrictedDataRange
 
 An OML RestrictedDataRange corresponds to an [OWL2 DataRange] defined
@@ -368,19 +384,6 @@ and with 8 specializations:
  - OML StringScalarRestriction
  - OML SynonymScalarRestriction
  - OML TimeScalarRestriction
-
-## OML SingletonInstance
-
-An OML SingletonInstance defines an instance of either an OML ConceptualEntity or of an OML Structure.
-
-{APIs: **Normalized**, **Functional**}
-
-Abstract definition with 1 generalization:
- - OML TerminologyInstanceAssertion
-
-and with 2 specializations:
- - OML ConceptualEntitySingletonInstance
- - OML DataStructureTuple
 
 ## OML SpecializationAxiom
 
@@ -483,50 +486,6 @@ and with 2 specializations:
  - OML Term
  - OML TermAxiom
 
-## OML TerminologyBundleAxiom
-
-An OML TerminologyBundleAxiom is a TerminologyAxiom that asserts a logical statement in an OML Bundle.
-
-{APIs: **Normalized**, **Functional**}
-
-Abstract definition with 1 generalization:
- - OML TerminologyAxiom
-
-and with 1 specialization:
- - OML BundledTerminologyAxiom
-
-## OML TerminologyBundleStatement
-
-An OML TerminologyBundleStatement is a logical axiom about an OML TerminologyThing
-in an OML Bundle.
-
-{APIs: **Normalized**, **Functional**}
-
-Abstract definition with 1 generalization:
- - OML ModuleElement
-
-and with 2 specializations:
- - OML DisjointUnionOfConceptsAxiom
- - OML RootConceptTaxonomyAxiom
-
-## OML TerminologyInstanceAssertion
-
-An OML TerminologyInstanceAssertion is a logical OML TerminologyThing defined in an OML TerminologyDescription.
-
-{APIs: **Normalized**, **Functional**}
-
-Abstract definition with 2 generalizations:
- - OML ModuleElement
- - OML Resource
-
-and with 6 specializations:
- - OML ReifiedRelationshipInstanceDomain
- - OML ReifiedRelationshipInstanceRange
- - OML ScalarDataPropertyValue
- - OML SingletonInstance
- - OML StructuredDataPropertyValue
- - OML UnreifiedRelationshipInstanceTuple
-
 ## OML UnaryTermKind
 
 An OML UnaryTermKind is an abstraction for the category of OML Term(s)
@@ -540,86 +499,9 @@ Abstract with 4 specializations:
  - OML Scalar
  - OML Structure
 
-# OML Glossary of 54 Concrete Definitions {#oml-concrete-glossary}
+# 2.2 OML Terminologies Glossary of 28 Concrete Definitions {#oml-terminologies-concrete-glossary}
 
-# OML Glossary of 49 Schema Concrete Definitions {#oml-schema-concrete-glossary}
-
-## OML AnnotationEntry
-
-For the OML tabular interchange representation,
-an OML AnnotationEntry (for a given OML AnnotationProperty) is a triple:
-- an OML Module in which the OML AnnotationEntry appears
-- an annotated OML TerminologyThing subject
-- a String value as the representation of some information
-  about the subject in that module.
-
-{APIs: **Normalized**, **Functional**}
-
-Normalized Relational Schema Table:
-- moduleUUID: UUID (Foreign Key for: OML Module)
-- subjectUUID: UUID (Foreign Key for: OML Element)
-- value: String
-
-## OML AnnotationProperty
-
-An OML AnnotationProperty maps to an [OWL2 AnnotationProperty]
-and is similarly a non-logical property for associating some information
-to any OML TerminologyThing in an OML Module.
-
-{APIs: **Normalized**, **Functional**}
-
-Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- iri: IRI
-- abbrevIRI: AbbrevIRI
-
-## OML TerminologyGraph
-
-An OML TerminologyGraph is an OML TerminologyBox with no statements our axioms involving OML Bundle(s).
-
-{APIs: **Normalized**, **Functional**}
-
-Concrete definition with 1 generalization:
- - OML TerminologyBox
-
-Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- kind: TerminologyKind
-- iri: IRI
-
-## OML Bundle
-
-An OML Bundle is an OML TerminologyBox that is
-an acyclic logical aggregate of other OML TerminologyBox(es)
-and that logically assert OML TerminologyBundleStatement(s).
-
-{APIs: **Normalized**, **Functional**}
-
-Concrete definition with 1 generalization:
- - OML TerminologyBox
-
-Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- kind: TerminologyKind
-- iri: IRI
-
-## OML ConceptDesignationTerminologyAxiom
-
-An OML ConceptDesignationTerminologyAxiom establishes
-a relationship from a source OML TerminologyBox
-where a designated OML Concept is defined to
-a target OML TerminologyGraph in which the internal
-structure of the designated OML Concept can be defined.
-
-{APIs: **Normalized**, **Functional**}
-
-Concrete definition with 1 generalization:
- - OML TerminologyBoxAxiom
-
-Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
-- designatedConceptUUID: UUID (Foreign Key for: OML Concept)
+# 2.2.1 OML Terminologies Glossary of 28 Schema Concrete Definitions {#oml-terminologies-schema-concrete-glossary}
 
 ## OML TerminologyExtensionAxiom
 
@@ -636,25 +518,6 @@ Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
 - tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
 - extendedTerminologyUUID: UUID (Foreign Key for: OML TerminologyBox)
-
-## OML TerminologyNestingAxiom
-
-An OML TerminologyNestingAxiom provides support for relating
-a white-box nested OML TerminologyGraph used for describing internal
-details about a nesting OML Concept defined in a nesting OML TerminologyBox.
-This nesting OML Concept specifies the context for the internal details
-defined in the nested OML TerminologyGraph.
-
-{APIs: **Normalized**, **Functional**}
-
-Concrete definition with 1 generalization:
- - OML TerminologyBoxAxiom
-
-Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
-- nestingTerminologyUUID: UUID (Foreign Key for: OML TerminologyBox)
-- nestingContextUUID: UUID (Foreign Key for: OML Concept)
 
 ## OML Aspect
 
@@ -1244,6 +1107,137 @@ Normalized Relational Schema Table:
 - axiomUUID: UUID (Foreign Key for: OML ScalarOneOfRestriction)
 - value: LexicalValue
 
+# 3 OML Graphs Glossary {#oml-graphs-glossary}
+# 3.1 OML Graphs Glossary of 3 Concrete Definitions {#oml-graphs-concrete-glossary}
+
+# 3.1.1 OML Graphs Glossary of 3 Schema Concrete Definitions {#oml-graphs-schema-concrete-glossary}
+
+## OML TerminologyGraph
+
+An OML TerminologyGraph is an OML TerminologyBox with no statements our axioms involving OML Bundle(s).
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML TerminologyBox
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- kind: TerminologyKind
+- iri: IRI
+
+## OML ConceptDesignationTerminologyAxiom
+
+An OML ConceptDesignationTerminologyAxiom establishes
+a relationship from a source OML TerminologyBox
+where a designated OML Concept is defined to
+a target OML TerminologyGraph in which the internal
+structure of the designated OML Concept can be defined.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML TerminologyBoxAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- designatedConceptUUID: UUID (Foreign Key for: OML Concept)
+
+## OML TerminologyNestingAxiom
+
+An OML TerminologyNestingAxiom provides support for relating
+a white-box nested OML TerminologyGraph used for describing internal
+details about a nesting OML Concept defined in a nesting OML TerminologyBox.
+This nesting OML Concept specifies the context for the internal details
+defined in the nested OML TerminologyGraph.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML TerminologyBoxAxiom
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- nestingTerminologyUUID: UUID (Foreign Key for: OML TerminologyBox)
+- nestingContextUUID: UUID (Foreign Key for: OML Concept)
+
+# 4 OML Bundles Glossary {#oml-bundles-glossary}
+# 4.1 OML Bundles Glossary of 4 Abstract Definitions {#oml-bundles-abstract-glossary}
+## OML ConceptTreeDisjunction
+
+An OML ConceptTreeDisjunction represents the root & non-leaf nodes of a concept taxonomy:
+- Root node is a RootConceptTaxonomyAxiom.
+- Non-leaf nodes are AnonymousConceptTaxonomyAxioms.
+
+{APIs: **Normalized**, **Functional**}
+
+Abstract with 2 specializations:
+ - OML AnonymousConceptTaxonomyAxiom
+ - OML RootConceptTaxonomyAxiom
+
+## OML DisjointUnionOfConceptsAxiom
+
+An OML DisjointUnionOfConceptsAxiom(s) represents non-leaf & leaf nodes of a concept taxonomy:
+- Each non-leaf node is an OML AnonymousConceptTaxonomyAxiom.
+- Each leaf nodes is an OML SpecificDisjointConceptAxiom.
+
+{APIs: **Normalized**, **Functional**}
+
+Abstract definition with 1 generalization:
+ - OML TerminologyBundleStatement
+
+and with 2 specializations:
+ - OML AnonymousConceptTaxonomyAxiom
+ - OML SpecificDisjointConceptAxiom
+
+## OML TerminologyBundleAxiom
+
+An OML TerminologyBundleAxiom is a TerminologyAxiom that asserts a logical statement in an OML Bundle.
+
+{APIs: **Normalized**, **Functional**}
+
+Abstract definition with 1 generalization:
+ - OML TerminologyAxiom
+
+and with 1 specialization:
+ - OML BundledTerminologyAxiom
+
+## OML TerminologyBundleStatement
+
+An OML TerminologyBundleStatement is a logical axiom about an OML TerminologyThing
+in an OML Bundle.
+
+{APIs: **Normalized**, **Functional**}
+
+Abstract definition with 1 generalization:
+ - OML ModuleElement
+
+and with 2 specializations:
+ - OML DisjointUnionOfConceptsAxiom
+ - OML RootConceptTaxonomyAxiom
+
+# 4.2 OML Bundles Glossary of 5 Concrete Definitions {#oml-bundles-concrete-glossary}
+
+# 4.2.1 OML Bundles Glossary of 5 Schema Concrete Definitions {#oml-bundles-schema-concrete-glossary}
+
+## OML Bundle
+
+An OML Bundle is an OML TerminologyBox that is
+an acyclic logical aggregate of other OML TerminologyBox(es)
+and that logically assert OML TerminologyBundleStatement(s).
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML TerminologyBox
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- kind: TerminologyKind
+- iri: IRI
+
 ## OML BundledTerminologyAxiom
 
 An OML BundledTerminologyAxiom identifies an OML TerminologyBox that an OML Bundle aggregates.
@@ -1306,6 +1300,79 @@ Normalized Relational Schema Table:
 - bundleUUID: UUID (Foreign Key for: OML Bundle)
 - disjointTaxonomyParentUUID: UUID (Foreign Key for: OML ConceptTreeDisjunction)
 - disjointLeafUUID: UUID (Foreign Key for: OML Concept)
+
+# 5 OML Descriptions Glossary {#oml-descriptions-glossary}
+# 5.1 OML Descriptions Glossary of 4 Abstract Definitions {#oml-descriptions-abstract-glossary}
+## OML ConceptualEntitySingletonInstance
+
+An OML ConceptualEntitySingletonInstance defines an instance of an OML ConceptualEntity.
+An OML ConceptualEntitySingletonInstance maps to an [OWL2 NamedIndividual].
+The semantics depends on the kind of OML ConceptualEntity classifier:
+- If the OML ConceptualEntity is the domain for at least at least
+  one OML DataRelationshipFromEntity with `isIdentityCriteria=true`,
+  then the [OWL2-DL] mapping includes an [OWL2 Key Axiom]
+  forcing that all distinctly named OML ConceptualEntitySingletonInstance
+  must have different values for each OML DataRelationshipFromEntity with `isIdentityCriteria=true`.
+- otherwise, distinctly named OML ConceptualEntitySingletonInstance
+  represent semantically different instances.
+
+{APIs: **Normalized**, **Functional**}
+
+Abstract definition with 1 generalization:
+ - OML SingletonInstance
+
+and with 2 specializations:
+ - OML ConceptInstance
+ - OML ReifiedRelationshipInstance
+
+## OML DescriptionBoxRelationship
+
+An OML DescriptionBoxRelationship is a directed binary relationship
+from an OML DescriptionBox source to an OML Module target.
+
+{APIs: **Normalized**, **Functional**}
+
+Abstract definition with 1 generalization:
+ - OML ModuleElement
+
+and with 2 specializations:
+ - OML DescriptionBoxExtendsClosedWorldDefinitions
+ - OML DescriptionBoxRefinement
+
+## OML SingletonInstance
+
+An OML SingletonInstance defines an instance of either an OML ConceptualEntity or of an OML Structure.
+
+{APIs: **Normalized**, **Functional**}
+
+Abstract definition with 1 generalization:
+ - OML TerminologyInstanceAssertion
+
+and with 2 specializations:
+ - OML ConceptualEntitySingletonInstance
+ - OML DataStructureTuple
+
+## OML TerminologyInstanceAssertion
+
+An OML TerminologyInstanceAssertion is a logical OML TerminologyThing defined in an OML TerminologyDescription.
+
+{APIs: **Normalized**, **Functional**}
+
+Abstract definition with 2 generalizations:
+ - OML ModuleElement
+ - OML Resource
+
+and with 6 specializations:
+ - OML ReifiedRelationshipInstanceDomain
+ - OML ReifiedRelationshipInstanceRange
+ - OML ScalarDataPropertyValue
+ - OML SingletonInstance
+ - OML StructuredDataPropertyValue
+ - OML UnreifiedRelationshipInstanceTuple
+
+# 5.2 OML Descriptions Glossary of 11 Concrete Definitions {#oml-descriptions-concrete-glossary}
+
+# 5.2.1 OML Descriptions Glossary of 11 Schema Concrete Definitions {#oml-descriptions-schema-concrete-glossary}
 
 ## OML ConceptInstance
 
@@ -1494,46 +1561,3 @@ Normalized Relational Schema Table:
 - domainUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
 - rangeUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
 - name: LocalName
-
-# OML Glossary of 3 Functional API Concrete Definitions {#oml-functional-concrete-glossary}
-
-## OML Annotation
-
-An OML Annotation maps to an [OWL2 Annotation] and is similarly
-a non-logical statement in an OML Module
-associating some information as the value of an
-OML AnnotationProperty for describing a subject (an OML TerminologyThing).
-
-{APIs: **Functional**}
-
-## OML AnnotationPropertyTable
-
-For the OML tabular interchange representation,
-an OML AnnotationPropertyTable pairs an OML AnnotationProperty key
-with a set of OML AnnotationEntry values.
-
-{APIs: **Functional**}
-
-## OML Extent
-
-An OML Extent is an in-memory store of all OML Element(s)
-loaded from external OML documents.
-
-{APIs: **Functional**}
-
-# OML Glossary of 2 EMF/CDO API Concrete Definitions {#oml-emf-cdo-concrete-glossary}
-
-## OML AnnotationSubjectPropertyValue
-
-An OML AnnotationSubjectPropertyValue is an in-memory construct
-pairing an OML AnnotationProperty with a String value.
-
-{APIs: **EMF/CDO**}
-
-## OML AnnotationSubjectTable
-
-An OML AnnotationSubjectTable is an in-memory construct
-pairing an OML TerminologyThing subject key with a set
-of OML AnnotationSubjectPropertyValue tuples.
-
-{APIs: **EMF/CDO**}
