@@ -2,7 +2,87 @@
 
 # Ontological Modeling
 
-OML is designed to frame a rigorous approach for Model-Based Systems Engineering (MBSE).
+OML is designed to support rigorous Model-Based Systems Engineering (MBSE) methodologies
+based on using [W3C] standards and recommendations as the logical semantics
+of MBSE modeling languages and of MBSE models expressed in such languages.
+
+## Modeling Language vs. Model expressed in a Modeling Language
+
+The distinction between a modeling language and a model comes from [OMG Specifications],
+specifically [OMG MOF 2.5.1], which stipulates that a modeling architecture involves
+a minimum of two modeling levels -- the so-called `M1` (the model level) and `M2` (the metamodel level).
+[OMG Specifications] define syntactic criteria for specifying
+what it means for a `model` at `M1` to `conform` to a `modeling language` at `M2`.
+Typically, `conformance` criteria defined in [OMG Specifications] involve logical
+constraints written in [OMG OCL] where the constraint variables range over instances of `M2` metaclasses
+defined in a metamodel for that modeling language and where constraint expressions refer to features and relationships
+defined in that metamodel (e.g., operations, properties, associations).
+
+In practice, verifying conformance of a model for a given modeling language defined in an [OMG Specification]
+typically requires using a modeling tool that implements the conformance criteria defined in that specification.
+Historically, this paradigm has been unsatisfactory for several reasons:
+- Some conformance criteria are described semi-formally in English because they can't be expressed in [OMG OCL]
+- In the abscence of positive and negative conformance test suites covering all syntactic constructs defined,
+  there are legitimate doubts about the sufficiency of conformance criteria defined in an [OMG Specification].
+- The correspondence between an [OMG OCL] syntactic conformance constraint defined in an [OMG Specification] and its
+  implementation is typically opaque. Without official conformance test suites, the correctness of an implementation
+  is uncertain.
+ 
+To support rigorous MBSE methodologies, OML defines conformance based on precise notions of
+ontological consistency and satisfiability across arbitrary levels of domain-specific modeling languages.
+In OML, a domain-specific modeling language is defined by an OML Bundle; which, from an OMG perspective,
+corresponds to a metamodel for that modeling language.
+The taxonomy of OML Concept(s) and of OML EntityRelationship(s) define the conceptual vocabulary
+for that modeling language. From an OMG perspective, this is similar to the taxonomies of metaclasses
+and of associations in a corresponding metamodel define the conceptual vocabulary of that modeling language.
+
+The main difference with respect to defining a conceptual vocabulary between OML and a [OMG MOF 2.5.1] metamodel is
+in the logical formalism of that conceptual vocabulary. In OML, the logical formalism stems
+from the semantics of mapping an OML Module to an [OWL2-DL] ontology with [SWRL] rules. 
+For an [OMG MOF 2.5.1] metamodel, the logical formalism is partially described in clause 15 (CMOF Abstract Semantics),
+which itself depends on several [OMG Specifications] including but not limited to [OMG UML 2.5] and [OMG OCL].
+The differences in logical formalism shave significant practical implications:
+- With OML, any [OWL2-DL] compliant reasoner that supports [SWRL] rules (e.g., [Pellet]) 
+  is adequate for reasoning about OML Module(s), including but not limited to providing automated answers to all 
+  [OWL2 Semantic Inference Problems] including but not limited to classification, entailment, satisfiability, 
+  consistency, instance checking and boolean conjunctive query answering. 
+- With [OMG MOF 2.5.1], the semi-formal character of the [OMG MOF 2.5.1 Abstract Semantics] makes
+  no mention of any practically useful reasoning problem about modeling. This means that [OMG Specifications] provide
+  a marginal value for rigorous modeling.
+
+In addition to grounding the semantics of modeling in the formalism of[OWL2-DL] ontologies with [SWRL] rules,
+OML also provides a formalization of the `instanceOf` relationship between an M1-level `model` written 
+in a modeling language and an M2-level `metamodel` for that modeling language. 
+According to the [OMG MOF 2.5.1 Abstract Semantics], every element in a `model` of a modeling language 
+is an `instance` of a classifier defined in the CMOF `metamodel` for that modeling language[^1]:
+- A `ClassInstance` is a model element that is an `instanceOf` a `Class` in the metamodel.
+- An `AssociationInstance` is a model element that is an `instanceOf` an `Association` in the metamodel.
+ 
+[^1] Although the [OMG MOF 2.5.1] specification defines the syntax for two kinds of metamodels, EMOF (clause 12)
+and CMOF (clause 14), the specification only defines the abstract semantics of CMOF metamodels (clause 15); 
+the abstract semantics of EMOF metamodels is unspecified.
+
+Instead of representing the relationship between a model and a metamodel via `instanceOf` relationships among
+different kinds of syntactic constructs as in [OMG MOF 2.5.1 Abstract Semantics], OML represents the relationship
+between a model `M1`and a metamodel `M2` via subsumption relationships:
+- Modeling an `instanceOf` an OML Concept defined in `M2` involves defining an OML ConceptSpecialization in `M1`
+  of that OML Concept in `M2`.
+- Modeling an `instanceOf` an OML EntityRelationship defined in `M2` for a domain `D` in `M1` and a range `R` in `M1`
+  can be done in two ways:
+  - Explicitly if the OML EntityRelationship is an OML ReifiedRelationship. This involves 
+    an OML ReifiedRelationshipSpecializationAxiom in `M1`
+    for a new specialized OML ReifiedRelationship in `M1` with domain `D` and range `R`.
+  - Implicitly via an OML EntityRestrictionAxiom in `M1` about that OML EntityRelationship 
+    for the restricted domain `D` and restricted range `R`.
+- Modeling an `instanceOf` an OML EntityScalarDataProperty defined in `M2` for a domain `D` in `M1` and a literal value `V` 
+  involves defining an OML EntityScalarDataPropertyParticularRestrictionAxiom in `M1` for
+  that OML DataRelationshipFromEntity for the specific restricted domain `D` and specific value `V`.
+Additionally, OML further requires all subsumption relationships specified in model `M1` as restrictions
+on a metamodel `M2` to be a monotonic refinement of the vocabulary of `M2`. This means:
+- The [OWL2-DL] ontology with [SWRL] rules corresponding to an `M1` model must be logically consistent and satisfiable
+  with the [OWL2-DL] ontology with [SWRL] rules corresponding to the `M2` metamodel that `M1` is an `instanceOf`.
+- Every OML Term of some kind in `M1` must be subsumed by at least one OML Term of the same kind in `M2`.
+
 From an MBSE perspective, a `model` in OML is an OML Module whose semantics is defined by
 its mapping to an [OWL2-DL Ontology] with [SWRL] rules. This applies to different kinds
 of `models` used in MBSE including but not limited to a metamodel like [OMG UML 2.5], 
@@ -33,7 +113,7 @@ An OML AnnotationProperty is identified by a combination of an abbreviated IRI a
 
 The notions of OML Module, OML Annotation, OML AnnotationProperty are described in the following figure:
 
-![OML Modules](images/OML Modules.svg)
+![OML Common](images/OML Common.svg)
 
 An OML Module maps to an [OWL2-DL Ontology] with a set of [OWL2 Axioms] and [SWRL] rules.
 On first order, OML distinguishes between two kinds of OML Module(s):
