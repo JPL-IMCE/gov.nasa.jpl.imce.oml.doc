@@ -515,8 +515,7 @@ Concrete definition with 1 generalization:
  - OML TerminologyBoxAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - extendedTerminologyUUID: UUID (Foreign Key for: OML TerminologyBox)
 
 ## OML Aspect
@@ -532,8 +531,7 @@ Concrete definition with 2 generalizations:
  - OML UnaryTermKind
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - name: LocalName
 
 ## OML Concept
@@ -548,8 +546,7 @@ Concrete definition with 3 generalizations:
  - OML UnaryTermKind
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - name: LocalName
 
 ## OML ReifiedRelationship
@@ -568,8 +565,7 @@ Concrete definition with 3 generalizations:
  - OML EntityRelationship
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - sourceUUID: UUID (Foreign Key for: OML Entity)
 - targetUUID: UUID (Foreign Key for: OML Entity)
 - isAsymmetric: Boolean
@@ -599,8 +595,7 @@ Concrete definition with 1 generalization:
  - OML EntityRelationship
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - sourceUUID: UUID (Foreign Key for: OML Entity)
 - targetUUID: UUID (Foreign Key for: OML Entity)
 - isAsymmetric: Boolean
@@ -625,8 +620,7 @@ Concrete definition with 2 generalizations:
  - OML UnaryTermKind
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - name: LocalName
 
 ## OML Structure
@@ -644,8 +638,7 @@ Concrete definition with 2 generalizations:
  - OML UnaryTermKind
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - name: LocalName
 
 ## OML BinaryScalarRestriction
@@ -668,8 +661,7 @@ Concrete definition with 1 generalization:
  - OML RestrictedDataRange
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
 - length: Option[Int]
 - minLength: Option[Int]
@@ -696,8 +688,7 @@ Concrete definition with 1 generalization:
  - OML RestrictedDataRange
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
 - length: Option[Int]
 - minLength: Option[Int]
@@ -742,8 +733,7 @@ Concrete definition with 1 generalization:
  - OML RestrictedDataRange
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
 - minExclusive: Option[LexicalNumber]
 - minInclusive: Option[LexicalNumber]
@@ -772,8 +762,7 @@ Concrete definition with 1 generalization:
  - OML RestrictedDataRange
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
 - length: Option[Int]
 - minLength: Option[Int]
@@ -793,8 +782,7 @@ Concrete definition with 1 generalization:
  - OML RestrictedDataRange
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
 - name: LocalName
 
@@ -824,8 +812,7 @@ Concrete definition with 1 generalization:
  - OML RestrictedDataRange
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
 - length: Option[Int]
 - minLength: Option[Int]
@@ -843,8 +830,7 @@ Concrete definition with 1 generalization:
  - OML RestrictedDataRange
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
 - name: LocalName
 
@@ -869,8 +855,7 @@ Concrete definition with 1 generalization:
  - OML RestrictedDataRange
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - restrictedRangeUUID: UUID (Foreign Key for: OML DataRange)
 - minExclusive: Option[LexicalTime]
 - minInclusive: Option[LexicalTime]
@@ -891,8 +876,7 @@ Concrete definition with 3 generalizations:
  - OML DataRelationshipToScalar
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - domainUUID: UUID (Foreign Key for: OML Entity)
 - rangeUUID: UUID (Foreign Key for: OML DataRange)
 - isIdentityCriteria: Boolean
@@ -911,8 +895,7 @@ Concrete definition with 3 generalizations:
  - OML DataRelationshipToStructure
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - domainUUID: UUID (Foreign Key for: OML Entity)
 - rangeUUID: UUID (Foreign Key for: OML Structure)
 - isIdentityCriteria: Boolean
@@ -931,8 +914,7 @@ Concrete definition with 3 generalizations:
  - OML DataRelationshipToScalar
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - domainUUID: UUID (Foreign Key for: OML Structure)
 - rangeUUID: UUID (Foreign Key for: OML DataRange)
 - name: LocalName
@@ -950,8 +932,7 @@ Concrete definition with 3 generalizations:
  - OML DataRelationshipToStructure
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - domainUUID: UUID (Foreign Key for: OML Structure)
 - rangeUUID: UUID (Foreign Key for: OML Structure)
 - name: LocalName
@@ -968,8 +949,7 @@ Concrete definition with 1 generalization:
  - OML SpecializationAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - superAspectUUID: UUID (Foreign Key for: OML Aspect)
 - subEntityUUID: UUID (Foreign Key for: OML Entity)
 
@@ -985,8 +965,7 @@ Concrete definition with 1 generalization:
  - OML SpecializationAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - superConceptUUID: UUID (Foreign Key for: OML Concept)
 - subConceptUUID: UUID (Foreign Key for: OML Concept)
 
@@ -1002,8 +981,7 @@ Concrete definition with 1 generalization:
  - OML SpecializationAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - superRelationshipUUID: UUID (Foreign Key for: OML ReifiedRelationship)
 - subRelationshipUUID: UUID (Foreign Key for: OML ReifiedRelationship)
 
@@ -1018,8 +996,7 @@ Concrete definition with 1 generalization:
  - OML EntityRestrictionAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - restrictedRelationUUID: UUID (Foreign Key for: OML EntityRelationship)
 - restrictedDomainUUID: UUID (Foreign Key for: OML Entity)
 - restrictedRangeUUID: UUID (Foreign Key for: OML Entity)
@@ -1035,8 +1012,7 @@ Concrete definition with 1 generalization:
  - OML EntityRestrictionAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - restrictedRelationUUID: UUID (Foreign Key for: OML EntityRelationship)
 - restrictedDomainUUID: UUID (Foreign Key for: OML Entity)
 - restrictedRangeUUID: UUID (Foreign Key for: OML Entity)
@@ -1052,8 +1028,7 @@ Concrete definition with 1 generalization:
  - OML EntityScalarDataPropertyRestrictionAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - restrictedEntityUUID: UUID (Foreign Key for: OML Entity)
 - scalarPropertyUUID: UUID (Foreign Key for: OML EntityScalarDataProperty)
 - scalarRestrictionUUID: UUID (Foreign Key for: OML DataRange)
@@ -1069,8 +1044,7 @@ Concrete definition with 1 generalization:
  - OML EntityScalarDataPropertyRestrictionAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - restrictedEntityUUID: UUID (Foreign Key for: OML Entity)
 - scalarPropertyUUID: UUID (Foreign Key for: OML EntityScalarDataProperty)
 - literalValue: LexicalValue
@@ -1086,8 +1060,7 @@ Concrete definition with 1 generalization:
  - OML EntityScalarDataPropertyRestrictionAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - restrictedEntityUUID: UUID (Foreign Key for: OML Entity)
 - scalarPropertyUUID: UUID (Foreign Key for: OML EntityScalarDataProperty)
 - scalarRestrictionUUID: UUID (Foreign Key for: OML DataRange)
@@ -1102,8 +1075,7 @@ Concrete definition with 1 generalization:
  - OML TermAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - axiomUUID: UUID (Foreign Key for: OML ScalarOneOfRestriction)
 - value: LexicalValue
 
@@ -1122,7 +1094,7 @@ Concrete definition with 1 generalization:
  - OML TerminologyBox
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
+- uuid: Option[UUID (Primary Key)]
 - kind: TerminologyKind
 - iri: IRI
 
@@ -1140,8 +1112,7 @@ Concrete definition with 1 generalization:
  - OML TerminologyBoxAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - designatedConceptUUID: UUID (Foreign Key for: OML Concept)
 
 ## OML TerminologyNestingAxiom
@@ -1158,8 +1129,7 @@ Concrete definition with 1 generalization:
  - OML TerminologyBoxAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- tboxUUID: UUID (Foreign Key for: OML TerminologyBox)
+- uuid: Option[UUID (Primary Key)]
 - nestingTerminologyUUID: UUID (Foreign Key for: OML TerminologyBox)
 - nestingContextUUID: UUID (Foreign Key for: OML Concept)
 
@@ -1234,7 +1204,7 @@ Concrete definition with 1 generalization:
  - OML TerminologyBox
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
+- uuid: Option[UUID (Primary Key)]
 - kind: TerminologyKind
 - iri: IRI
 
@@ -1251,9 +1221,8 @@ Concrete definition with 1 generalization:
  - OML TerminologyBundleAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
+- uuid: Option[UUID (Primary Key)]
 - bundledTerminologyUUID: UUID (Foreign Key for: OML TerminologyBox)
-- bundleUUID: UUID (Foreign Key for: OML Bundle)
 
 ## OML AnonymousConceptTaxonomyAxiom
 
@@ -1266,8 +1235,7 @@ Concrete definition with 2 generalizations:
  - OML DisjointUnionOfConceptsAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- bundleUUID: UUID (Foreign Key for: OML Bundle)
+- uuid: Option[UUID (Primary Key)]
 - disjointTaxonomyParentUUID: UUID (Foreign Key for: OML ConceptTreeDisjunction)
 
 ## OML RootConceptTaxonomyAxiom
@@ -1282,8 +1250,7 @@ Concrete definition with 2 generalizations:
  - OML TerminologyBundleStatement
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- bundleUUID: UUID (Foreign Key for: OML Bundle)
+- uuid: Option[UUID (Primary Key)]
 - rootUUID: UUID (Foreign Key for: OML Concept)
 
 ## OML SpecificDisjointConceptAxiom
@@ -1296,8 +1263,7 @@ Concrete definition with 1 generalization:
  - OML DisjointUnionOfConceptsAxiom
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- bundleUUID: UUID (Foreign Key for: OML Bundle)
+- uuid: Option[UUID (Primary Key)]
 - disjointTaxonomyParentUUID: UUID (Foreign Key for: OML ConceptTreeDisjunction)
 - disjointLeafUUID: UUID (Foreign Key for: OML Concept)
 
@@ -1354,7 +1320,7 @@ and with 2 specializations:
 
 ## OML TerminologyInstanceAssertion
 
-An OML TerminologyInstanceAssertion is a logical OML TerminologyThing defined in an OML TerminologyDescription.
+An OML TerminologyInstanceAssertion is a logical OML ModuleElement defined in an OML TerminologyDescription.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -1384,10 +1350,11 @@ Concrete definition with 1 generalization:
  - OML ConceptualEntitySingletonInstance
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- descriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+- uuid: Option[UUID (Primary Key)]
 - singletonConceptClassifierUUID: UUID (Foreign Key for: OML Concept)
 - name: LocalName
+- scalarDataPropertyValuesUUID: Option[UUID (Foreign Key for: OML ScalarDataPropertyValue)]
+- structuredDataPropertyValuesUUID: Option[UUID (Foreign Key for: OML StructuredDataPropertyValue)]
 
 ## OML DataStructureTuple
 
@@ -1399,10 +1366,11 @@ Concrete definition with 1 generalization:
  - OML SingletonInstance
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
+- uuid: Option[UUID (Primary Key)]
 - dataStructureTypeUUID: UUID (Foreign Key for: OML Structure)
-- structuredDataPropertyValueUUID: UUID (Foreign Key for: OML StructuredDataPropertyValue)
 - name: LocalName
+- scalarDataPropertyValuesUUID: Option[UUID (Foreign Key for: OML ScalarDataPropertyValue)]
+- structuredDataPropertyValuesUUID: Option[UUID (Foreign Key for: OML StructuredDataPropertyValue)]
 
 ## OML DescriptionBox
 
@@ -1415,9 +1383,16 @@ Concrete definition with 1 generalization:
  - OML Module
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
+- uuid: Option[UUID (Primary Key)]
+- closedWorldDefinitionsUUID: Option[UUID (Foreign Key for: OML DescriptionBoxExtendsClosedWorldDefinitions)]
 - kind: DescriptionKind
 - iri: IRI
+- conceptInstancesUUID: Option[UUID (Foreign Key for: OML ConceptInstance)]
+- descriptionBoxRefinementsUUID: Option[UUID (Foreign Key for: OML DescriptionBoxRefinement)]
+- reifiedRelationshipInstanceDomainsUUID: Option[UUID (Foreign Key for: OML ReifiedRelationshipInstanceDomain)]
+- reifiedRelationshipInstanceRangesUUID: Option[UUID (Foreign Key for: OML ReifiedRelationshipInstanceRange)]
+- reifiedRelationshipInstancesUUID: Option[UUID (Foreign Key for: OML ReifiedRelationshipInstance)]
+- unreifiedRelationshipInstanceTuplesUUID: Option[UUID (Foreign Key for: OML UnreifiedRelationshipInstanceTuple)]
 
 ## OML DescriptionBoxExtendsClosedWorldDefinitions
 
@@ -1432,8 +1407,7 @@ Concrete definition with 1 generalization:
  - OML DescriptionBoxRelationship
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- descriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+- uuid: Option[UUID (Primary Key)]
 - closedWorldDefinitionsUUID: UUID (Foreign Key for: OML TerminologyBox)
 
 ## OML DescriptionBoxRefinement
@@ -1448,8 +1422,7 @@ Concrete definition with 1 generalization:
  - OML DescriptionBoxRelationship
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- refiningDescriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+- uuid: Option[UUID (Primary Key)]
 - refinedDescriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
 
 ## OML ReifiedRelationshipInstance
@@ -1462,10 +1435,11 @@ Concrete definition with 1 generalization:
  - OML ConceptualEntitySingletonInstance
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- descriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+- uuid: Option[UUID (Primary Key)]
 - singletonReifiedRelationshipClassifierUUID: UUID (Foreign Key for: OML ReifiedRelationship)
 - name: LocalName
+- scalarDataPropertyValuesUUID: Option[UUID (Foreign Key for: OML ScalarDataPropertyValue)]
+- structuredDataPropertyValuesUUID: Option[UUID (Foreign Key for: OML StructuredDataPropertyValue)]
 
 ## OML ReifiedRelationshipInstanceDomain
 
@@ -1481,8 +1455,7 @@ Concrete definition with 1 generalization:
  - OML TerminologyInstanceAssertion
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- descriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+- uuid: Option[UUID (Primary Key)]
 - reifiedRelationshipInstanceUUID: UUID (Foreign Key for: OML ReifiedRelationshipInstance)
 - domainUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
 - name: LocalName
@@ -1501,8 +1474,7 @@ Concrete definition with 1 generalization:
  - OML TerminologyInstanceAssertion
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- descriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+- uuid: Option[UUID (Primary Key)]
 - reifiedRelationshipInstanceUUID: UUID (Foreign Key for: OML ReifiedRelationshipInstance)
 - rangeUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
 - name: LocalName
@@ -1518,8 +1490,7 @@ Concrete definition with 1 generalization:
  - OML TerminologyInstanceAssertion
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- singletonInstanceUUID: UUID (Foreign Key for: OML SingletonInstance)
+- uuid: Option[UUID (Primary Key)]
 - scalarDataPropertyUUID: UUID (Foreign Key for: OML DataRelationshipToScalar)
 - name: LocalName
 - scalarPropertyValue: String
@@ -1535,9 +1506,9 @@ Concrete definition with 1 generalization:
  - OML TerminologyInstanceAssertion
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- singletonInstanceUUID: UUID (Foreign Key for: OML SingletonInstance)
+- uuid: Option[UUID (Primary Key)]
 - structuredDataPropertyUUID: UUID (Foreign Key for: OML DataRelationshipToStructure)
+- structuredPropertyTupleUUID: UUID (Foreign Key for: OML DataStructureTuple)
 - name: LocalName
 
 ## OML UnreifiedRelationshipInstanceTuple
@@ -1555,8 +1526,7 @@ Concrete definition with 1 generalization:
  - OML TerminologyInstanceAssertion
 
 Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- descriptionBoxUUID: UUID (Foreign Key for: OML DescriptionBox)
+- uuid: Option[UUID (Primary Key)]
 - unreifiedRelationshipUUID: UUID (Foreign Key for: OML UnreifiedRelationship)
 - domainUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
 - rangeUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
