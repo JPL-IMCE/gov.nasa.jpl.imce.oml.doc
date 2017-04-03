@@ -1,17 +1,17 @@
 {% include "./external-links.md" %}
 # OML Glossary Summary
 
-The vocabulary of the Ontological Modeling Language, OML, consists of 89 definitions
-(35 abstract and 54 concrete).
+The vocabulary of the Ontological Modeling Language, OML, consists of 90 definitions
+(36 abstract and 54 concrete).
 This OML vocabulary is the basis of the Ontological Modeling Framework (OMF), which is 
 a collection of multiple technology-based Application Programming Interfaces (APIs) & libraries.
 
 - **EMF/CDO** OMF APIs and libraries based on the [Eclipse Modeling Framework] and [Connected Data Objects]
 
-  All 89 definitions induce corresponding EMF-based APIs and libraries.
+  All 90 definitions induce corresponding EMF-based APIs and libraries.
   For the 54 concrete definitions, the *EMF/CDO* APIs
-  include all the 49 *Normalized* APIs, all the 3 *Functional* APIs,
-  and 2 definitions uniquely intended for *EMF/CDO*.
+  include all the 49 *Normalized* APIs, all the 2 *Functional* APIs,
+  and 3 definitions uniquely intended for *EMF/CDO*.
   
 - **Normalized** OMF APIs and libraries based on polyglot functional programming in Java, JavaScript and Scala
 
@@ -24,13 +24,13 @@ a collection of multiple technology-based Application Programming Interfaces (AP
   
 - **Functional** OMF APIs and libraries in Scala for in-memory processing of OML tabular interchange representations
 
-  A subset of 3 definitions from the 54 concrete definitions
+  A subset of 2 definitions from the 54 concrete definitions
   augment the normalized OMF APIs for the in-memory processing of OMF information
   extracted from parsing the OML tabular interchange representation.
 
 
 # 1 OML Common Glossary {#oml-common-glossary}
-# 1.1 OML Common Glossary of 3 Abstract Definitions {#oml-common-abstract-glossary}
+# 1.1 OML Common Glossary of 4 Abstract Definitions {#oml-common-abstract-glossary}
 ## OML Module
 
 An OML Module maps to an [OWL2-DL Ontology];
@@ -42,6 +42,16 @@ and a non-logical container of OML Annotation(s).
 Abstract definition with 2 generalizations:
  - OML Element
  - OML Resource
+
+
+## OML ModuleEdge
+
+An OML ModuleEdge is a binary, directed relationship from one OML Module to another
+
+{APIs: **Normalized**, **Functional**}
+
+Abstract definition with 1 generalization:
+ - OML Element
 
 
 ## OML ModuleElement
@@ -101,7 +111,7 @@ Normalized Relational Schema Table:
 - iri: IRI
 - abbrevIRI: AbbrevIRI
 
-# 1.2.2 OML Common Glossary of 3 Functional API Concrete Definitions {#oml-common-functional-concrete-glossary}
+# 1.2.2 OML Common Glossary of 2 Functional API Concrete Definitions {#oml-common-functional-concrete-glossary}
 
 ## OML Annotation
 
@@ -112,14 +122,6 @@ OML AnnotationProperty for describing a subject (an OML TerminologyThing).
 
 {APIs: **Functional**}
 
-## OML AnnotationPropertyTable
-
-For the OML tabular interchange representation,
-an OML AnnotationPropertyTable pairs an OML AnnotationProperty key
-with a set of OML AnnotationEntry values.
-
-{APIs: **Functional**}
-
 ## OML Extent
 
 An OML Extent is an in-memory store of all OML Element(s)
@@ -127,7 +129,15 @@ loaded from external OML documents.
 
 {APIs: **Functional**}
 
-# 1.2.3 OML Common Glossary of 2 EMF/CDO API Concrete Definitions {#oml-common-emf-cdo-concrete-glossary}
+# 1.2.3 OML Common Glossary of 3 EMF/CDO API Concrete Definitions {#oml-common-emf-cdo-concrete-glossary}
+
+## OML AnnotationPropertyTable
+
+For the OML tabular interchange representation,
+an OML AnnotationPropertyTable pairs an OML AnnotationProperty key
+with a set of OML AnnotationEntry values.
+
+{APIs: **EMF/CDO**}
 
 ## OML AnnotationSubjectPropertyValue
 
@@ -438,7 +448,7 @@ An OML TerminologyAxiom is asserted in an OML TerminologyBox of some kind.
 {APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
- - OML ModuleElement
+ - OML ModuleEdge
 
 and with 1 specialization:
  - OML TerminologyBoxAxiom
@@ -1114,6 +1124,7 @@ Concrete definition with 1 generalization:
 Normalized Relational Schema Table:
 - uuid: Option[UUID (Primary Key)]
 - designatedConceptUUID: UUID (Foreign Key for: OML Concept)
+- designatedTerminologyUUID: UUID (Foreign Key for: OML TerminologyBox)
 
 ## OML TerminologyNestingAxiom
 
@@ -1299,7 +1310,7 @@ from an OML DescriptionBox source to an OML Module target.
 {APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
- - OML ModuleElement
+ - OML ModuleEdge
 
 and with 2 specializations:
  - OML DescriptionBoxExtendsClosedWorldDefinitions
@@ -1353,8 +1364,6 @@ Normalized Relational Schema Table:
 - uuid: Option[UUID (Primary Key)]
 - singletonConceptClassifierUUID: UUID (Foreign Key for: OML Concept)
 - name: LocalName
-- scalarDataPropertyValuesUUID: Option[UUID (Foreign Key for: OML ScalarDataPropertyValue)]
-- structuredDataPropertyValuesUUID: Option[UUID (Foreign Key for: OML StructuredDataPropertyValue)]
 
 ## OML DataStructureTuple
 
@@ -1369,8 +1378,6 @@ Normalized Relational Schema Table:
 - uuid: Option[UUID (Primary Key)]
 - dataStructureTypeUUID: UUID (Foreign Key for: OML Structure)
 - name: LocalName
-- scalarDataPropertyValuesUUID: Option[UUID (Foreign Key for: OML ScalarDataPropertyValue)]
-- structuredDataPropertyValuesUUID: Option[UUID (Foreign Key for: OML StructuredDataPropertyValue)]
 
 ## OML DescriptionBox
 
@@ -1384,15 +1391,8 @@ Concrete definition with 1 generalization:
 
 Normalized Relational Schema Table:
 - uuid: Option[UUID (Primary Key)]
-- closedWorldDefinitionsUUID: Option[UUID (Foreign Key for: OML DescriptionBoxExtendsClosedWorldDefinitions)]
 - kind: DescriptionKind
 - iri: IRI
-- conceptInstancesUUID: Option[UUID (Foreign Key for: OML ConceptInstance)]
-- descriptionBoxRefinementsUUID: Option[UUID (Foreign Key for: OML DescriptionBoxRefinement)]
-- reifiedRelationshipInstanceDomainsUUID: Option[UUID (Foreign Key for: OML ReifiedRelationshipInstanceDomain)]
-- reifiedRelationshipInstanceRangesUUID: Option[UUID (Foreign Key for: OML ReifiedRelationshipInstanceRange)]
-- reifiedRelationshipInstancesUUID: Option[UUID (Foreign Key for: OML ReifiedRelationshipInstance)]
-- unreifiedRelationshipInstanceTuplesUUID: Option[UUID (Foreign Key for: OML UnreifiedRelationshipInstanceTuple)]
 
 ## OML DescriptionBoxExtendsClosedWorldDefinitions
 
@@ -1438,8 +1438,6 @@ Normalized Relational Schema Table:
 - uuid: Option[UUID (Primary Key)]
 - singletonReifiedRelationshipClassifierUUID: UUID (Foreign Key for: OML ReifiedRelationship)
 - name: LocalName
-- scalarDataPropertyValuesUUID: Option[UUID (Foreign Key for: OML ScalarDataPropertyValue)]
-- structuredDataPropertyValuesUUID: Option[UUID (Foreign Key for: OML StructuredDataPropertyValue)]
 
 ## OML ReifiedRelationshipInstanceDomain
 
@@ -1508,7 +1506,6 @@ Concrete definition with 1 generalization:
 Normalized Relational Schema Table:
 - uuid: Option[UUID (Primary Key)]
 - structuredDataPropertyUUID: UUID (Foreign Key for: OML DataRelationshipToStructure)
-- structuredPropertyTupleUUID: UUID (Foreign Key for: OML DataStructureTuple)
 - name: LocalName
 
 ## OML UnreifiedRelationshipInstanceTuple
