@@ -207,7 +207,10 @@ for the domain of an OML DataRelationship
 
 {APIs: **Normalized**, **Functional**}
 
-Abstract with 2 specializations:
+Abstract definition with 1 generalization:
+ - OML Element
+
+and with 2 specializations:
  - OML DataRelationshipFromEntity
  - OML DataRelationshipFromStructure
 
@@ -246,7 +249,10 @@ for the range of an OML DataRelationship
 
 {APIs: **Normalized**, **Functional**}
 
-Abstract with 2 specializations:
+Abstract definition with 1 generalization:
+ - OML Element
+
+and with 2 specializations:
  - OML DataRelationshipToScalar
  - OML DataRelationshipToStructure
 
@@ -1154,7 +1160,10 @@ An OML ConceptTreeDisjunction represents the root & non-leaf nodes of a concept 
 
 {APIs: **Normalized**, **Functional**}
 
-Abstract with 2 specializations:
+Abstract definition with 1 generalization:
+ - OML Element
+
+and with 2 specializations:
  - OML AnonymousConceptTaxonomyAxiom
  - OML RootConceptTaxonomyAxiom
 
@@ -1167,7 +1176,7 @@ An OML DisjointUnionOfConceptsAxiom(s) represents non-leaf & leaf nodes of a con
 {APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
- - OML TerminologyBundleStatement
+ - OML Element
 
 and with 2 specializations:
  - OML AnonymousConceptTaxonomyAxiom
@@ -1195,8 +1204,7 @@ in an OML Bundle.
 Abstract definition with 1 generalization:
  - OML ModuleElement
 
-and with 2 specializations:
- - OML DisjointUnionOfConceptsAxiom
+and with 1 specialization:
  - OML RootConceptTaxonomyAxiom
 
 # 4.2 OML Bundles Glossary of 5 Concrete Definitions {#oml-bundles-concrete-glossary}
@@ -1241,13 +1249,14 @@ An OML AnonymousConceptTaxonomyAxiom is an anonymous taxonomy tree of DisjointUn
 
 {APIs: **Normalized**, **Functional**}
 
-Concrete definition with 2 generalizations:
+Concrete definition with 3 generalizations:
  - OML ConceptTreeDisjunction
  - OML DisjointUnionOfConceptsAxiom
+ - OML Element
 
 Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
-- disjointTaxonomyParentUUID: UUID (Foreign Key for: OML ConceptTreeDisjunction)
+- name: LocalName
 
 ## OML RootConceptTaxonomyAxiom
 
@@ -1270,12 +1279,12 @@ An OML SpecificDisjointConceptAxiom specifies a leaf in a taxonomy tree.
 
 {APIs: **Normalized**, **Functional**}
 
-Concrete definition with 1 generalization:
+Concrete definition with 2 generalizations:
  - OML DisjointUnionOfConceptsAxiom
+ - OML Element
 
 Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
-- disjointTaxonomyParentUUID: UUID (Foreign Key for: OML ConceptTreeDisjunction)
 - disjointLeafUUID: UUID (Foreign Key for: OML Concept)
 
 # 5 OML Descriptions Glossary {#oml-descriptions-glossary}
@@ -1295,8 +1304,10 @@ The semantics depends on the kind of OML ConceptualEntity classifier:
 
 {APIs: **Normalized**, **Functional**}
 
-Abstract definition with 1 generalization:
+Abstract definition with 3 generalizations:
+ - OML Resource
  - OML SingletonInstance
+ - OML TerminologyInstanceAssertion
 
 and with 2 specializations:
  - OML ConceptInstance
@@ -1323,7 +1334,7 @@ An OML SingletonInstance defines an instance of either an OML ConceptualEntity o
 {APIs: **Normalized**, **Functional**}
 
 Abstract definition with 1 generalization:
- - OML TerminologyInstanceAssertion
+ - OML Element
 
 and with 2 specializations:
  - OML ConceptualEntitySingletonInstance
@@ -1335,16 +1346,13 @@ An OML TerminologyInstanceAssertion is a logical OML ModuleElement defined in an
 
 {APIs: **Normalized**, **Functional**}
 
-Abstract definition with 2 generalizations:
+Abstract definition with 1 generalization:
  - OML ModuleElement
- - OML Resource
 
-and with 6 specializations:
+and with 4 specializations:
+ - OML ConceptualEntitySingletonInstance
  - OML ReifiedRelationshipInstanceDomain
  - OML ReifiedRelationshipInstanceRange
- - OML ScalarDataPropertyValue
- - OML SingletonInstance
- - OML StructuredDataPropertyValue
  - OML UnreifiedRelationshipInstanceTuple
 
 # 5.2 OML Descriptions Glossary of 11 Concrete Definitions {#oml-descriptions-concrete-glossary}
@@ -1371,13 +1379,13 @@ An OML DataStructureTuple defines an structured tuple instance of an OML Structu
 
 {APIs: **Normalized**, **Functional**}
 
-Concrete definition with 1 generalization:
+Concrete definition with 2 generalizations:
+ - OML Element
  - OML SingletonInstance
 
 Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
 - dataStructureTypeUUID: UUID (Foreign Key for: OML Structure)
-- name: LocalName
 
 ## OML DescriptionBox
 
@@ -1456,7 +1464,6 @@ Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
 - reifiedRelationshipInstanceUUID: UUID (Foreign Key for: OML ReifiedRelationshipInstance)
 - domainUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
-- name: LocalName
 
 ## OML ReifiedRelationshipInstanceRange
 
@@ -1475,7 +1482,6 @@ Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
 - reifiedRelationshipInstanceUUID: UUID (Foreign Key for: OML ReifiedRelationshipInstance)
 - rangeUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
-- name: LocalName
 
 ## OML ScalarDataPropertyValue
 
@@ -1485,12 +1491,11 @@ of an OML DataRelationshipToScalar for a particular OML SingletonInstance.
 {APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
- - OML TerminologyInstanceAssertion
+ - OML Element
 
 Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
 - scalarDataPropertyUUID: UUID (Foreign Key for: OML DataRelationshipToScalar)
-- name: LocalName
 - scalarPropertyValue: String
 
 ## OML StructuredDataPropertyValue
@@ -1501,12 +1506,11 @@ of an OML DataRelationshipToStructure for a particular OML SingletonInstance.
 {APIs: **Normalized**, **Functional**}
 
 Concrete definition with 1 generalization:
- - OML TerminologyInstanceAssertion
+ - OML Element
 
 Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
 - structuredDataPropertyUUID: UUID (Foreign Key for: OML DataRelationshipToStructure)
-- name: LocalName
 
 ## OML UnreifiedRelationshipInstanceTuple
 
@@ -1527,4 +1531,3 @@ Normalized Relational Schema Table:
 - unreifiedRelationshipUUID: UUID (Foreign Key for: OML UnreifiedRelationship)
 - domainUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
 - rangeUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
-- name: LocalName
