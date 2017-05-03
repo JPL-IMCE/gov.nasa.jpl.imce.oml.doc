@@ -1171,8 +1171,8 @@ and with 2 specializations:
 
 ## OML DisjointUnionOfConceptsAxiom
 
-An OML DisjointUnionOfConceptsAxiom(s) represents non-leaf & leaf nodes of a concept taxonomy:
-- Each non-leaf node is an OML AnonymousConceptTaxonomyAxiom.
+An OML DisjointUnionOfConceptsAxiom(s) specifies the logical union of non-leaf & leaf nodes in a concept taxonomy tree:
+- Each non-leaf node is an OML AnonymousConceptUnionAxiom.
 - Each leaf nodes is an OML SpecificDisjointConceptAxiom.
 
 {APIs: **Normalized**, **Functional**}
@@ -1247,8 +1247,8 @@ Normalized Relational Schema Table:
 
 ## OML RootConceptTaxonomyAxiom
 
-An OML RootConceptTaxonomyAxiom asserts that, in the scope of a Bundle, a particular Entity
-is the root of a taxonomy of specializations of that Entity.
+An OML RootConceptTaxonomyAxiom asserts that, in the scope of a Bundle, a particular OML Concept
+is the root of a taxonomy of concept specializations.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -1262,7 +1262,7 @@ Normalized Relational Schema Table:
 
 ## OML SpecificDisjointConceptAxiom
 
-An OML SpecificDisjointConceptAxiom specifies a leaf in a taxonomy tree.
+An OML SpecificDisjointConceptAxiom specifies a leaf in a concept taxonomy tree.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -1276,7 +1276,9 @@ Normalized Relational Schema Table:
 
 ## OML AnonymousConceptUnionAxiom
 
-An OML AnonymousConceptUnionAxiom is an anonymous union of DisjointUnionOfEntityAxioms.
+An OML AnonymousConceptUnionAxiom specifies an anonymous logical union of DisjointUnionOfEntityAxioms in a concept taxonomy tree.
+Although it is semantically anonymous, it is syntactically identified with name whose
+only purpose is for generating the axiom's namespace UUID.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -1330,6 +1332,10 @@ and with 2 specializations:
 
 ## OML SingletonInstanceStructuredDataPropertyContext
 
+An OML SingletonInstanceStructuredDataPropertyContext defines the context of
+an OML DataRelationshipToStructure for an insance of either an OML Concept or OML Structure
+for specifying values of its data properties
+via nested OML StructuredDataPropertyTuple(s) and OML ScalarDataPropertyValue(s).
 
 {APIs: **Normalized**, **Functional**}
 
@@ -1472,7 +1478,7 @@ Normalized Relational Schema Table:
 ## OML ScalarDataPropertyValue
 
 An OML ScalarDataPropertyValue specifies a literal string as the value of
-an OML ScalarDataProperty in the scope of an OML SingletonInstanceStructuredDataPropertyContext.
+an OML DataRelationshipToScalar in the scope of an OML SingletonInstanceStructuredDataPropertyContext.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -1486,8 +1492,8 @@ Normalized Relational Schema Table:
 
 ## OML SingletonInstanceScalarDataPropertyValue
 
-An OML ScalarDataPropertyValue defines a tuple for representing the atomic String value
-of an OML DataRelationshipToScalar for a particular OML SingletonInstance.
+An OML SingletonInstanceScalarDataPropertyValue defines a tuple for representing the atomic String value
+of an OML EntityScalarDataProperty for a particular OML ConceptualEntitySingletonInstance.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -1502,8 +1508,8 @@ Normalized Relational Schema Table:
 
 ## OML SingletonInstanceStructuredDataPropertyValue
 
-An OML StructuredDataPropertyValue defines a tuple for representing the structured tuple value
-of an OML DataRelationshipToStructure for a particular OML SingletonInstance.
+An OML SingletonInstanceStructuredDataPropertyValue is an SingletonInstanceStructuredDataPropertyContext
+for an OML ConceptualEntitySingletonInstance.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -1518,7 +1524,8 @@ Normalized Relational Schema Table:
 
 ## OML StructuredDataPropertyTuple
 
-An OML DataStructureTuple defines an structured tuple instance of an OML Structure.
+An OML StructuredDataPropertyTuple is an SingletonInstanceStructuredDataPropertyContext
+nested in a container OML SingletonInstanceStructuredDataPropertyContext.
 
 {APIs: **Normalized**, **Functional**}
 
