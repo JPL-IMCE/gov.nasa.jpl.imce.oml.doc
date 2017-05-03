@@ -1,21 +1,21 @@
 {% include "./external-links.md" %}
 # OML Glossary Summary
 
-The vocabulary of the Ontological Modeling Language, OML, consists of 90 definitions
-(36 abstract and 54 concrete).
+The vocabulary of the Ontological Modeling Language, OML, consists of 91 definitions
+(36 abstract and 55 concrete).
 This OML vocabulary is the basis of the Ontological Modeling Framework (OMF), which is 
 a collection of multiple technology-based Application Programming Interfaces (APIs) & libraries.
 
 - **EMF/CDO** OMF APIs and libraries based on the [Eclipse Modeling Framework] and [Connected Data Objects]
 
-  All 90 definitions induce corresponding EMF-based APIs and libraries.
-  For the 54 concrete definitions, the *EMF/CDO* APIs
-  include all the 49 *Normalized* APIs, all the 2 *Functional* APIs,
+  All 91 definitions induce corresponding EMF-based APIs and libraries.
+  For the 55 concrete definitions, the *EMF/CDO* APIs
+  include all the 50 *Normalized* APIs, all the 2 *Functional* APIs,
   and 3 definitions uniquely intended for *EMF/CDO*.
   
 - **Normalized** OMF APIs and libraries based on polyglot functional programming in Java, JavaScript and Scala
 
-  A subset of 49 definitions from the 54 concrete definitions
+  A subset of 50 definitions from the 55 concrete definitions
   constitute the set of normalized relational database schema tables for the technology-agnostic OML tabular interchange representation.
   These definitions generate language-friendly functional programming APIs for Java, JavaScript and Scala.
   Note that Scala is the only language that can provide strong compile-time guarantees of the referential transparency of the OML functional APIs.
@@ -24,7 +24,7 @@ a collection of multiple technology-based Application Programming Interfaces (AP
   
 - **Functional** OMF APIs and libraries in Scala for in-memory processing of OML tabular interchange representations
 
-  A subset of 2 definitions from the 54 concrete definitions
+  A subset of 2 definitions from the 55 concrete definitions
   augment the normalized OMF APIs for the in-memory processing of OMF information
   extracted from parsing the OML tabular interchange representation.
 
@@ -207,8 +207,9 @@ for the domain of an OML DataRelationship
 
 {APIs: **Normalized**, **Functional**}
 
-Abstract definition with 1 generalization:
+Abstract definition with 2 generalizations:
  - OML Element
+ - OML Resource
 
 and with 2 specializations:
  - OML DataRelationshipFromEntity
@@ -249,8 +250,9 @@ for the range of an OML DataRelationship
 
 {APIs: **Normalized**, **Functional**}
 
-Abstract definition with 1 generalization:
+Abstract definition with 2 generalizations:
  - OML Element
+ - OML Resource
 
 and with 2 specializations:
  - OML DataRelationshipToScalar
@@ -1164,7 +1166,7 @@ Abstract definition with 1 generalization:
  - OML Element
 
 and with 2 specializations:
- - OML AnonymousConceptTaxonomyAxiom
+ - OML AnonymousConceptUnionAxiom
  - OML RootConceptTaxonomyAxiom
 
 ## OML DisjointUnionOfConceptsAxiom
@@ -1179,7 +1181,7 @@ Abstract definition with 1 generalization:
  - OML Element
 
 and with 2 specializations:
- - OML AnonymousConceptTaxonomyAxiom
+ - OML AnonymousConceptUnionAxiom
  - OML SpecificDisjointConceptAxiom
 
 ## OML TerminologyBundleAxiom
@@ -1243,21 +1245,6 @@ Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
 - bundledTerminologyUUID: UUID (Foreign Key for: OML TerminologyBox)
 
-## OML AnonymousConceptTaxonomyAxiom
-
-An OML AnonymousConceptTaxonomyAxiom is an anonymous taxonomy tree of DisjointUnionOfEntityAxioms.
-
-{APIs: **Normalized**, **Functional**}
-
-Concrete definition with 3 generalizations:
- - OML ConceptTreeDisjunction
- - OML DisjointUnionOfConceptsAxiom
- - OML Element
-
-Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- name: LocalName
-
 ## OML RootConceptTaxonomyAxiom
 
 An OML RootConceptTaxonomyAxiom asserts that, in the scope of a Bundle, a particular Entity
@@ -1287,6 +1274,21 @@ Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
 - disjointLeafUUID: UUID (Foreign Key for: OML Concept)
 
+## OML AnonymousConceptUnionAxiom
+
+An OML AnonymousConceptUnionAxiom is an anonymous union of DisjointUnionOfEntityAxioms.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 3 generalizations:
+ - OML ConceptTreeDisjunction
+ - OML DisjointUnionOfConceptsAxiom
+ - OML Element
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- name: LocalName
+
 # 5 OML Descriptions Glossary {#oml-descriptions-glossary}
 # 5.1 OML Descriptions Glossary of 4 Abstract Definitions {#oml-descriptions-abstract-glossary}
 ## OML ConceptualEntitySingletonInstance
@@ -1304,9 +1306,8 @@ The semantics depends on the kind of OML ConceptualEntity classifier:
 
 {APIs: **Normalized**, **Functional**}
 
-Abstract definition with 3 generalizations:
+Abstract definition with 2 generalizations:
  - OML Resource
- - OML SingletonInstance
  - OML TerminologyInstanceAssertion
 
 and with 2 specializations:
@@ -1327,9 +1328,8 @@ and with 2 specializations:
  - OML DescriptionBoxExtendsClosedWorldDefinitions
  - OML DescriptionBoxRefinement
 
-## OML SingletonInstance
+## OML SingletonInstanceStructuredDataPropertyContext
 
-An OML SingletonInstance defines an instance of either an OML ConceptualEntity or of an OML Structure.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -1337,8 +1337,8 @@ Abstract definition with 1 generalization:
  - OML Element
 
 and with 2 specializations:
- - OML ConceptualEntitySingletonInstance
- - OML DataStructureTuple
+ - OML SingletonInstanceStructuredDataPropertyValue
+ - OML StructuredDataPropertyTuple
 
 ## OML TerminologyInstanceAssertion
 
@@ -1355,9 +1355,9 @@ and with 4 specializations:
  - OML ReifiedRelationshipInstanceRange
  - OML UnreifiedRelationshipInstanceTuple
 
-# 5.2 OML Descriptions Glossary of 11 Concrete Definitions {#oml-descriptions-concrete-glossary}
+# 5.2 OML Descriptions Glossary of 12 Concrete Definitions {#oml-descriptions-concrete-glossary}
 
-# 5.2.1 OML Descriptions Glossary of 11 Schema Concrete Definitions {#oml-descriptions-schema-concrete-glossary}
+# 5.2.1 OML Descriptions Glossary of 12 Schema Concrete Definitions {#oml-descriptions-schema-concrete-glossary}
 
 ## OML ConceptInstance
 
@@ -1372,20 +1372,6 @@ Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
 - singletonConceptClassifierUUID: UUID (Foreign Key for: OML Concept)
 - name: LocalName
-
-## OML DataStructureTuple
-
-An OML DataStructureTuple defines an structured tuple instance of an OML Structure.
-
-{APIs: **Normalized**, **Functional**}
-
-Concrete definition with 2 generalizations:
- - OML Element
- - OML SingletonInstance
-
-Normalized Relational Schema Table:
-- uuid: UUID (Primary Key)
-- dataStructureTypeUUID: UUID (Foreign Key for: OML Structure)
 
 ## OML DescriptionBox
 
@@ -1485,8 +1471,8 @@ Normalized Relational Schema Table:
 
 ## OML ScalarDataPropertyValue
 
-An OML ScalarDataPropertyValue defines a tuple for representing the atomic String value
-of an OML DataRelationshipToScalar for a particular OML SingletonInstance.
+An OML ScalarDataPropertyValue specifies a literal string as the value of
+an OML ScalarDataProperty in the scope of an OML SingletonInstanceStructuredDataPropertyContext.
 
 {APIs: **Normalized**, **Functional**}
 
@@ -1498,15 +1484,46 @@ Normalized Relational Schema Table:
 - scalarDataPropertyUUID: UUID (Foreign Key for: OML DataRelationshipToScalar)
 - scalarPropertyValue: String
 
-## OML StructuredDataPropertyValue
+## OML SingletonInstanceScalarDataPropertyValue
+
+An OML ScalarDataPropertyValue defines a tuple for representing the atomic String value
+of an OML DataRelationshipToScalar for a particular OML SingletonInstance.
+
+{APIs: **Normalized**, **Functional**}
+
+Concrete definition with 1 generalization:
+ - OML ModuleElement
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- singletonInstanceUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
+- scalarDataPropertyUUID: UUID (Foreign Key for: OML EntityScalarDataProperty)
+- scalarPropertyValue: String
+
+## OML SingletonInstanceStructuredDataPropertyValue
 
 An OML StructuredDataPropertyValue defines a tuple for representing the structured tuple value
 of an OML DataRelationshipToStructure for a particular OML SingletonInstance.
 
 {APIs: **Normalized**, **Functional**}
 
+Concrete definition with 2 generalizations:
+ - OML ModuleElement
+ - OML SingletonInstanceStructuredDataPropertyContext
+
+Normalized Relational Schema Table:
+- uuid: UUID (Primary Key)
+- singletonInstanceUUID: UUID (Foreign Key for: OML ConceptualEntitySingletonInstance)
+- structuredDataPropertyUUID: UUID (Foreign Key for: OML DataRelationshipToStructure)
+
+## OML StructuredDataPropertyTuple
+
+An OML DataStructureTuple defines an structured tuple instance of an OML Structure.
+
+{APIs: **Normalized**, **Functional**}
+
 Concrete definition with 1 generalization:
- - OML Element
+ - OML SingletonInstanceStructuredDataPropertyContext
 
 Normalized Relational Schema Table:
 - uuid: UUID (Primary Key)
