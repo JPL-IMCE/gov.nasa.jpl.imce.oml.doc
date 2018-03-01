@@ -17,3 +17,7 @@ _book
 
 # Eclipse GFM viewer
 .*.md.html
+
+# Intellij
+.idea
+*.iml
